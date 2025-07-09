@@ -1,15 +1,25 @@
-#include <stdio.h>
-#include <ctype.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/02 12:56:26 by pafranco          #+#    #+#             */
+/*   Updated: 2025/07/09 10:06:51 by pafranco         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 
-void	print_toupper(char *str)
+void	string_toupper(char *str)
 {
 	int		i;
 	
 	i = 0;
 	while (str[i])
 	{
-		cout << (toupper(str[i]));
+		str[i] = toupper(str[i]);
 		i++;
 	}
 }
@@ -21,12 +31,14 @@ int main(int argc, char **argv)
 	i = 1;
 	if (argc == 1)
 	{
-		cout << * LOUD AND UNBEARABLE FEEDBACK NOISE *
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 		return (0);
 	}
 	while (argv[i] != 0)
 	{
-		cout << print_toupper(argv[i]);
+		string_toupper(argv[i]);
+		std::cout << argv[i];
 		i++;
 	}
+	std::cout << std::endl;
 }
