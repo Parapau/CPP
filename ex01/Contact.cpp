@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 13:21:51 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/09 15:01:52 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/07/11 12:26:58 by tv               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 
 Contact::Contact(void)
 {
-}
-
-Contact::Contact(std::string fName, std::string sName, std::string nick, std::string num, std::string secret)
-{
-	this->_fName = fName;
-	this->_sName = sName;
-	this->_nick = nick;
-	this->_num = num;
-	this->_secret = secret;
 }
 
 Contact::~Contact(void)
