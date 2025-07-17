@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 12:48:22 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/15 17:55:12 by tv               ###   ########.fr       */
+/*   Updated: 2025/07/17 20:58:06 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	booking(void)
 	done = 0;
 	book = PhoneBook();
 	std::cout << "Welcome to your digital phonebook" << std::endl;
-	while (done == 0)
+	while (done == 0 && !std::cin.eof())
 	{
 		std::cout << "What do you want to do?\n(ADD/SEARCH/EXIT)" << std::endl;
 		std::getline(std::cin, say);
