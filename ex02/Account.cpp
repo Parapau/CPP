@@ -6,7 +6,7 @@
 /*   By: tv <marvin@42.fr>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 18:11:46 by tv                #+#    #+#             */
-/*   Updated: 2025/07/17 20:43:10 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/07/17 22:36:26 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ Account::Account(int initial_deposit)
 	this->_accountIndex = Account::_nbAccounts;
 	_nbAccounts++;
 	this->_amount = initial_deposit;
+	_totalAmount = _totalAmount + initial_deposit;
 	this->_nbDeposits = 0;
 	this->_nbWithdrawals = 0;
 	_displayTimestamp();
