@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 18:52:26 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/28 19:11:39 by pafranco         ###   ########.fr       */
+/*   Created: 2025/07/28 18:07:13 by pafranco          #+#    #+#             */
+/*   Updated: 2025/07/28 20:01:47 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Zombie.hpp"
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
-int	main(void)
+
+#include <iostream>
+#include <string>
+#include <stdlib.h>
+
+class Weapon
 {
-	Zombie	*zombie;
+	private:
+		std::string	_type;
+	public:
+		Weapon(void);
+		Weapon(std::string type);
+		~Weapon(void);
+		std::string	getType(void) const;
+		void		setType(std::string type);
+};
 
-	zombie = newZombie("Agapito Disousa");
-	zombie->Zombie::announce();
-	randomChump("Anselmo");
-	delete zombie;
-}
+#endif

@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 18:07:13 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/28 18:55:37 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/07/28 19:48:50 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Zombie
 		Zombie(void);
 		~Zombie(void);
 		std::string	getName(void) const;
-		void		setName(std::string);
+		void		setName(std::string name);
 		void		announce(void);
 };
 

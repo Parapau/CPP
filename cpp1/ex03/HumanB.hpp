@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 18:52:26 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/28 19:11:39 by pafranco         ###   ########.fr       */
+/*   Created: 2025/07/28 19:49:42 by pafranco          #+#    #+#             */
+/*   Updated: 2025/07/28 21:01:39 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Zombie.hpp"
+#ifndef HUAMANB_HPP
+# define HUAMANB_HPP
 
-int	main(void)
+#include <iostream>
+#include <string>
+#include "Weapon.hpp"
+
+class HumanB
 {
-	Zombie	*zombie;
+	private:
+		Weapon *_weapon;
+		std::string _name;
+	public:
+		HumanB(std::string name);
+		~HumanB(void);
+		std::string	getName(void);
+		Weapon		*getWeapon(void);
+		void		setName(std::string name);
+		void		setWeapon(Weapon &weapon);
+		void		attack(void);
+};
 
-	zombie = newZombie("Agapito Disousa");
-	zombie->Zombie::announce();
-	randomChump("Anselmo");
-	delete zombie;
-}
+#endif

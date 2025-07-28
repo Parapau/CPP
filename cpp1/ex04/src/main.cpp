@@ -5,19 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 18:52:26 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/28 19:11:39 by pafranco         ###   ########.fr       */
+/*   Created: 2025/07/28 21:12:46 by pafranco          #+#    #+#             */
+/*   Updated: 2025/07/28 21:25:12 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Zombie.hpp"
+#include <iostream>
+#include <fstream>
 
-int	main(void)
+int main()
 {
-	Zombie	*zombie;
-
-	zombie = newZombie("Agapito Disousa");
-	zombie->Zombie::announce();
-	randomChump("Anselmo");
-	delete zombie;
+	std::ofstream MyFile("a.txt");
+	MyFile << "Puta espanya";
+	MyFile.close();
 }

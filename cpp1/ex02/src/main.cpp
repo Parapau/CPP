@@ -5,19 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 18:52:26 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/28 19:11:39 by pafranco         ###   ########.fr       */
+/*   Created: 2025/07/28 19:21:53 by pafranco          #+#    #+#             */
+/*   Updated: 2025/07/28 19:32:07 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Zombie.hpp"
+#include <iostream>
 
 int	main(void)
 {
-	Zombie	*zombie;
+	std::string	s;
+	std::string	*ptr;
+	std::string	&ref = s;
 
-	zombie = newZombie("Agapito Disousa");
-	zombie->Zombie::announce();
-	randomChump("Anselmo");
-	delete zombie;
+	s = "HI THIS IS BRAIN";
+	ptr = &s;
+	std::cout << &s << std::endl;
+	std::cout << ptr << std::endl;
+	std::cout << &ref << std::endl;
+	std::cout << s << std::endl;
+	std::cout << *ptr << std::endl;
+	std::cout << ref << std::endl;
 }

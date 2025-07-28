@@ -6,11 +6,11 @@
 #    By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/02 12:53:07 by pafranco          #+#    #+#              #
-#    Updated: 2025/07/21 19:49:53 by pafranco         ###   ########.fr        #
+#    Updated: 2025/07/28 20:25:58 by pafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Megaphone
+NAME		= ohTheHumanity
 	
 CC			= c++
 FLAGS		= -Wall -Wextra -Werror -g -std=c++98
@@ -19,11 +19,12 @@ RM			= rm -rf
 SRCDIR = 	src/
 OBJDIR = 	obj/
 
-FILES		= megaphone
+FILES		= main Weapon HumanA HumanB
 
 SRC			= $(addprefix $(SRCDIR), $(FILES:=.cpp))
 OBJ			= $(addprefix $(OBJDIR), $(FILES:=.o))
 DEPS		= $(addprefix $(OBJDIR), $(FILES:=.d))
+HEADER		= Weapon.hpp HumanA.hpp HumanB.hpp
 
 all: $(NAME)
 
