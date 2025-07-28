@@ -6,35 +6,45 @@
 #    By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/02 12:53:07 by pafranco          #+#    #+#              #
-#    Updated: 2025/07/02 12:53:25 by pafranco         ###   ########.fr        #
+#    Updated: 2025/07/21 19:49:53 by pafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME		= Megaphone
+	
+CC			= c++
+FLAGS		= -Wall -Wextra -Werror -g -std=c++98
+RM			= rm -rf
 
-SRC = megaphone.cpp
-OBJ = $(addprefix obj/, $(SRC:%.cpp=%.o))
-CC = c++
-RM = rm -rf
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+SRCDIR = 	src/
+OBJDIR = 	obj/
 
-all:		dir $(NAME)
+FILES		= megaphone
 
-dir:
-				mkdir -p obj
+SRC			= $(addprefix $(SRCDIR), $(FILES:=.cpp))
+OBJ			= $(addprefix $(OBJDIR), $(FILES:=.o))
+DEPS		= $(addprefix $(OBJDIR), $(FILES:=.d))
 
-obj/%.o:		%.cpp Makefile
-				$(CC) $(CPPFLAGS) -c $< -o $@
+all: $(NAME)
 
-$(NAME):	$(OBJ)
-				$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ)
+	@$(CC) $(OBJ) -o $(NAME)
+	@printf " - Executable ready.\n"
+
+$(OBJDIR)%.o: $(SRCDIR)%.cpp $(HEADER) Makefile
+	@mkdir -p $(OBJDIR)
+	@$(CC) $(FLAGS) -c -MMD $< -o $@
 
 clean:
-				$(RM) obj
+	@$(RM) $(OBJDIR) $(OBJ)
+	@printf " - Object files removed.\n"
 
-fclean:		clean
-				$(RM) $(NAME)
+fclean: clean
+	@$(RM) $(NAME)
+	@printf " - Executable removed.\n"
 
-re: 		fclean all
+re: fclean all
 
-.PHONY: all clean fclean re dir
+-include $(DEPS)
+
+.PHONY: all clean fclean re

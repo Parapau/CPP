@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 12:56:26 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/17 22:32:17 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/07/21 19:53:19 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	string_toupper(char *str)
 	i = 0;
 	while (str[i])
 	{
-		str[i] = toupper(str[i]);
+		str[i] = std::toupper(str[i]);
 		i++;
 	}
 }

@@ -6,12 +6,12 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 12:48:22 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/17 20:58:06 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/07/21 19:00:30 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+#include "../PhoneBook.hpp"
+#include "../Contact.hpp"
 
 void	booking(void)
 {

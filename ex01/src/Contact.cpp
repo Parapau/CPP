@@ -6,11 +6,11 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 13:21:51 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/11 12:26:58 by tv               ###   ########.fr       */
+/*   Updated: 2025/07/21 20:35:22 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
+#include "../Contact.hpp"
 
 Contact::Contact(void)
 {

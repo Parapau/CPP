@@ -6,11 +6,11 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 16:39:23 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/15 18:53:49 by tv               ###   ########.fr       */
+/*   Updated: 2025/07/28 17:35:45 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "../PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void)
 {
@@ -48,37 +48,116 @@ void	PhoneBook::addToArray(Contact contact)
 		setNewest(0);
 }
 
+static void	askName(Contact *contact)
+{
+	std::string		input;
+	std::string		say;
+
+	say = "Introduce the new contact's first name:";
+	while (input.empty())
+	{
+		std::cout << say << std::endl;
+		std::getline(std::cin, input);
+		say = "You have to actually input something, idiot:";
+		if (std::cin.eof())
+			exit(0);
+	}
+	contact->setFName(input);
+}
+
+static void	askSurname(Contact *contact)
+{
+	std::string		input;
+	std::string		say;
+
+	say = "Introduce the new contact's surname:";
+	while (input.empty())
+	{
+		std::cout << say << std::endl;
+		std::getline(std::cin, input);
+		say = "You have to actually input something, idiot:";
+		if (std::cin.eof())
+			exit(0);
+	}
+	contact->setSName(input);
+}
+
+static void	askNick(Contact *contact)
+{
+	std::string		input;
+	std::string		say;
+
+	say = "Introduce the new contact's nickname:";
+	while (input.empty())
+	{
+		std::cout << say << std::endl;
+		std::getline(std::cin, input);
+		say = "You have to actually input something, idiot:";
+		if (std::cin.eof())
+			exit(0);
+	}
+	contact->setNick(input);
+}
+
+static int	isNum(std::string input)
+{
+	int		i;
+
+	i = 0;
+	while (input[i])
+	{
+		if (!std::isdigit(input[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static void	askNum(Contact *contact)
+{
+	std::string		input;
+	std::string		say;
+
+	say = "Introduce the new contact's number:";
+	while (input.empty() || !isNum(input))
+	{
+		std::cout << say << std::endl;
+		std::getline(std::cin, input);
+		say = "Do you even know what 'number' means?";
+		if (std::cin.eof())
+			exit(0);
+	}
+	contact->setNum(input);
+}
+
+static void	askSecret(Contact *contact)
+{
+	std::string		input;
+	std::string		say;
+
+	say = "Share with me this contact's juiciest and darkest secret >:) :";
+	while (input.empty())
+	{
+		std::cout << say << std::endl;
+		std::getline(std::cin, input);
+		say = "Don't keep your secrets to yourself >:(";
+		if (std::cin.eof())
+			exit(0);
+	}
+	contact->setSecret(input);
+}
+
 void	PhoneBook::add(void)
 {
 	Contact contact;
 	std::string		input;
 
-	while(checkEmpty(contact))
-	{
-		if (!input.empty())
-			std::cout << "none of the fields may be empty, please fill them again" << std::endl;
-		std::cout << "Introduce the new contact's first name:" << std::endl;
-		std::getline(std::cin, input);
-		contact.setFName(input);
-		input = "";
-		std::cout << "Introduce the new contact's surname:" << std::endl;
-		std::getline(std::cin, input);
-		contact.setSName(input);
-		input = "";
-		std::cout << "Introduce the nickanme of this new contact:" << std::endl;
-		std::getline(std::cin, input);
-		contact.setNick(input);
-		input = "";
-		std::cout << "Introduce the new contact's number:" << std::endl;
-		std::getline(std::cin, input);
-		contact.setNum(input);
-		input = "";
-		std::cout << "Share with me this contact's juiciest and darkest secret >:) :" << std::endl;
-		std::getline(std::cin, input);
-		contact.setSecret(input);
-	}
+	askName(&contact);
+	askSurname(&contact);
+	askNick(&contact);
+	askNum(&contact);
+	askSecret(&contact);
 	addToArray(contact);
-	std::cout << getNewest();
 }
 
 static int	parseIndex(std::string input, int newest)
