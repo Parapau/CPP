@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 20:05:25 by pafranco          #+#    #+#             */
-/*   Updated: 2025/07/28 21:02:13 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:18:33 by tv               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ HumanB::~HumanB(void)
 
 void	HumanB::attack(void)
 {
-	std::cout << getName() << " attacks with their " << getWeapon()->getType() << std::endl;
+	std::cout << getName() << " attacks with their " << getWeapon()->getType()
+		<< std::endl;
 }
 
 std::string HumanB::getName(void)
