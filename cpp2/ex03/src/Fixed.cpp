@@ -96,19 +96,31 @@ float	Fixed::operator/(const Fixed &og)
 
 Fixed	&Fixed::operator++()
 {
-	float	num;
-
-	num = this->toFloat() + 1;
-	setRawBits(roundf(num * (1 << _fract)));
+	_rawBits++;
 	return (*this);
 }
 
-Fixed	&Fixed::operator++(int)
+Fixed	Fixed::operator++(int)
 {
 	Fixed	old;
 
 	old = *this;
 	operator++();
+	return (old);
+}
+
+Fixed	&Fixed::operator--()
+{
+	_rawBits--;
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	old;
+
+	old = *this;
+	operator--();
 	return (old);
 }
 
@@ -139,6 +151,34 @@ float	Fixed::toFloat(void) const
 	return (ret);
 	*/
 	return ((float) _rawBits / (1 << _fract));
+}
+
+Fixed const	Fixed::min(Fixed &n1, Fixed &n2)
+{
+	if (n1 < n2)
+		return (n1);
+	return (n2);
+}
+
+Fixed const	Fixed::min(const Fixed &n1, const Fixed &n2)
+{
+	if (n1.getRawBits() < n2.getRawBits())
+		return (n1);
+	return (n2);
+}
+
+Fixed const	Fixed::max(Fixed &n1, Fixed &n2)
+{
+	if (n1 > n2)
+		return (n1);
+	return (n2);
+}
+
+Fixed const	Fixed::max(const Fixed &n1, const Fixed &n2)
+{
+	if (n1.getRawBits() > n2.getRawBits())
+		return (n1);
+	return (n2);
 }
 
 //GETTERS
