@@ -21,7 +21,7 @@ void	Harl::info(void)
 void	Harl::warning(void)
 {
 	std::cout << "I'm warning you i may fall asleep on the keyboard rn" << std::endl;
-}n
+}
 
 void	Harl::error(void)
 {

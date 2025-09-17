@@ -1,5 +1,5 @@
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#ifndef POINT_HPP
+# define POINT_HPP
 
 #include "Fixed.hpp"
 
@@ -11,11 +11,14 @@ class Point
 	public:
 		Point(void);
 		Point(float x, float y);
-		Point(const Point &point);
-		Point		&operator=(const Point &og);
+		Point(Point &point);
+		Point		&operator=(Point &og);
 		float		getX(void);
 		float		getY(void);
+		void		print(void);
 		~Point(void);
 };
+
+bool	bsp(Point &v1, Point &v2, Point &v3, Point &p);
 
 #endif

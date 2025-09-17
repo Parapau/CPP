@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   bsp.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 18:15:50 by pafranco          #+#    #+#             */
-/*   Updated: 2025/09/17 18:51:05 by pafranco         ###   ########.fr       */
+/*   Created: 2025/09/17 17:47:50 by pafranco          #+#    #+#             */
+/*   Updated: 2025/09/17 18:50:14 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "../Fixed.hpp"
 #include "../Point.hpp"
 
-void	check_points(Point &point, Point &a, Point &b, Point &c)
+static float	area(Point &v1, Point &v2, Point &v3)
 {
-	if (bsp(a, b, c, point))
-		std::cout << "INSIDE" << std::endl;
-	else
-		std::cout << "OUTSIDE" << std::endl;
+   return abs((v1.getX() * (v2.getY() - v3.getY())
+			+ v2.getX() * (v3.getY() - v1.getY())
+			+ v3.getX() * (v1.getY() - v2.getY())) / 2.0);
 }
 
-int	main(void)
+bool	bsp(Point &v1, Point &v2, Point &v3, Point &p)
 {
-	Point	pointA(2, 2), pointB(5,5);
-	Point	a(0,0), b(5,0), c(0,5);
+	int		area1;
+	int		area2;
+	int		area3;
+	int		areaOG;
 
-	check_points(pointA, a, b, c);
-	check_points(pointB, a, b, c);
+	areaOG = area(v1, v2, v3);
+	area1 = area(v1, v2, p);
+	area2 = area(v1, p, v3);
+	area3 = area(p, v2, v3);
+	return (areaOG == area1 + area2 + area3);
 }

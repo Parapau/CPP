@@ -6,7 +6,7 @@
 #    By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/02 12:53:07 by pafranco          #+#    #+#              #
-#    Updated: 2025/08/14 13:52:13 by tv               ###   ########.fr        #
+#    Updated: 2025/09/17 18:18:52 by pafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,12 @@ RM			= rm -rf
 SRCDIR = 	src/
 OBJDIR = 	obj/
 
-FILES		= main Fixed
+FILES		= main Fixed Point bsp
 
 SRC			= $(addprefix $(SRCDIR), $(FILES:=.cpp))
 OBJ			= $(addprefix $(OBJDIR), $(FILES:=.o))
 DEPS		= $(addprefix $(OBJDIR), $(FILES:=.d))
-HEADER		= Fixed.hpp
+HEADER		= Fixed.hpp Point.hpp
 
 all: $(NAME)
 

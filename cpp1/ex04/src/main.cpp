@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 21:12:46 by pafranco          #+#    #+#             */
-/*   Updated: 2025/08/12 14:22:30 by tv               ###   ########.fr       */
+/*   Updated: 2025/09/15 18:40:59 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static std::string	checkWord(std::string line, std::string oldW, std::string new
 	while (i != std::string::npos)
 	{
 		newLine.append(line, start, (int)i - start);
-		newLine.append(newW, start);
+		newLine.append(newW);
 		start = (int)i + len;
 		i = line.find(oldW, start);
 	}
@@ -59,7 +59,6 @@ int	main(int argc, char **argv)
 		text.append(checkWord(line, argv[2], argv[3]));
 		text.append("\n");
 	}
-	std::cout << text;
 	inFile.close();
 	file.append(".replace");
 	std::ofstream outfile(file.c_str());
