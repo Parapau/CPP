@@ -39,11 +39,27 @@ ScavTrap::~ScavTrap(void)
 	std::cout << "Scav destructor called" << std::endl;
 }
 
+//GETTERS
+
+bool	ScavTrap::isGuard(void)
+{
+	return (this->_guard);
+}
+
 //FUNCTIONS
 
 void	ScavTrap::guardGate(void)
 {
-	std::cout << "ScavTrap " << getName() << " is on gate guard mode." << std::endl;
+	if (isGuard())
+	{
+		this->_guard = 1;
+		std::cout << "ScavTrap " << getName() << " is on gate guard mode." << std::endl;
+	}
+	else
+	{
+		this->_guard = 0;
+		std::cout << "ScavTrap " << getName() << " is no longer on gate guard mode." << std::endl;
+	}
 }
 
 //OVERLOADS

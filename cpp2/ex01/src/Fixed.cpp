@@ -53,7 +53,11 @@ std::ostream&	operator<<(std::ostream &o, const Fixed &og)
 
 int		Fixed::toInt(void) const
 {
-	return (getRawBits() >> 8);
+	if (getRawBits() >= 0)
+		return (getRawBits() >> this->_fract);
+	if (getRawBits() << (32 - this->_fract) != 0)
+		return ((getRawBits() >> this->_fract) + 1);
+	return (getRawBits() >> this->_fract);
 }
 
 float	Fixed::toFloat(void) const

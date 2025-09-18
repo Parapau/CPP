@@ -14,4 +14,5 @@ int	main(void)
 	d.attack("Ildefons");
 	e.takeDamage(3);
 	e.guardGate();
+	e.guardGate();
 }

@@ -4,7 +4,6 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Constructor pocho >:(" << std::endl;
 	this->_rawBits = 0;
 }
 
@@ -123,28 +122,15 @@ Fixed	Fixed::operator--(int)
 
 int		Fixed::toInt(void) const
 {
-	return (getRawBits() >> 8);
+	if (getRawBits() >= 0)
+		return (getRawBits() >> this->_fract);
+	if (getRawBits() << (32 - this->_fract) != 0)
+		return ((getRawBits() >> this->_fract) + 1);
+	return (getRawBits() >> this->_fract);
 }
 
 float	Fixed::toFloat(void) const
-{/*
-	float	ret;
-	int		num;
-	int		i;
-	int		pwr;
-
-	num = getRawBits();
-	ret = num >> 8;
-	i = _fract;
-	pwr = 2;
-	while (i > 0)
-	{
-		ret += (float) (num & i) / pwr;
-		pwr *= 2;
-		i--;
-	}
-	return (ret);
-	*/
+{
 	return ((float) _rawBits / (1 << _fract));
 }
 

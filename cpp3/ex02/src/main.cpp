@@ -8,6 +8,8 @@ int	main(void)
 	ClapTrap	c(b);
 	ScavTrap	d;
 	ScavTrap	e("Pep");
+	FragTrap	f;
+	FragTrap	g("Joaquim");
 
 	b.attack("pepe");
 	c.takeDamage(5);
@@ -15,4 +17,6 @@ int	main(void)
 	d.attack("Ildefons");
 	e.takeDamage(3);
 	e.guardGate();
+	e.guardGate();
+	g.highFivesGuys();
 }

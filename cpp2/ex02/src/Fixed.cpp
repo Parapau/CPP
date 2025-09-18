@@ -23,7 +23,7 @@ Fixed::Fixed(const float num)
 Fixed::Fixed(const Fixed &og)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	_rawBits = og.getRawBits();
+	this->_rawBits = og.getRawBits();
 }
 
 //DESTRUCTOR`S
@@ -96,7 +96,7 @@ float	Fixed::operator/(const Fixed &og)
 
 Fixed	&Fixed::operator++()
 {
-	_rawBits++;
+	this->_rawBits++;
 	return (*this);
 }
 
@@ -111,7 +111,7 @@ Fixed	Fixed::operator++(int)
 
 Fixed	&Fixed::operator--()
 {
-	_rawBits--;
+	this->_rawBits--;
 	return (*this);
 }
 
@@ -128,29 +128,16 @@ Fixed	Fixed::operator--(int)
 
 int		Fixed::toInt(void) const
 {
-	return (getRawBits() >> 8);
+	if (getRawBits() >= 0)
+		return (getRawBits() >> this->_fract);
+	if (getRawBits() << (32 - this->_fract) != 0)
+		return ((getRawBits() >> this->_fract) + 1);
+	return (getRawBits() >> this->_fract);
 }
 
 float	Fixed::toFloat(void) const
-{/*
-	float	ret;
-	int		num;
-	int		i;
-	int		pwr;
-
-	num = getRawBits();
-	ret = num >> 8;
-	i = _fract;
-	pwr = 2;
-	while (i > 0)
-	{
-		ret += (float) (num & i) / pwr;
-		pwr *= 2;
-		i--;
-	}
-	return (ret);
-	*/
-	return ((float) _rawBits / (1 << _fract));
+{
+	return ((float) getRawBits() / (1 << this->_fract));
 }
 
 Fixed const	Fixed::min(Fixed &n1, Fixed &n2)
