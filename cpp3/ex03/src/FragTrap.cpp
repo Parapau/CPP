@@ -4,7 +4,7 @@
 
 FragTrap::FragTrap(void)
 {
-	setName("Anselmo");
+	setName(ClapTrap::_name);
 	setHP(100);
 	setEP(50);
 	setAttack(20);

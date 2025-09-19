@@ -50,7 +50,7 @@ bool	ScavTrap::isGuard(void)
 
 void	ScavTrap::guardGate(void)
 {
-	if (isGuard())
+	if (isGuard() == 0)
 	{
 		this->_guard = 1;
 		std::cout << "ScavTrap " << getName() << " is on gate guard mode." << std::endl;

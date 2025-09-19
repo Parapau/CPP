@@ -4,7 +4,7 @@
 
 ScavTrap::ScavTrap(void)
 {
-	setName("Anselmo");
+	setName(ClapTrap::_name);
 	setHP(100);
 	setEP(50);
 	setAttack(20);
@@ -50,7 +50,7 @@ bool	ScavTrap::isGuard(void)
 
 void	ScavTrap::guardGate(void)
 {
-	if (isGuard())
+	if (isGuard() == 0)
 	{
 		this->_guard = 1;
 		std::cout << "ScavTrap " << getName() << " is on gate guard mode." << std::endl;
