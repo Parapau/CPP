@@ -1,0 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/22 17:04:05 by pafranco          #+#    #+#             */
+/*   Updated: 2025/09/22 17:52:33 by pafranco         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../Animal.hpp"
+#include "../Cat.hpp"
+#include "../Dog.hpp"
+#include "../WrongAnimal.hpp"
+#include "../WrongCat.hpp"
+
+int main()
+{
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	const WrongAnimal* k = new WrongAnimal();
+	const WrongAnimal* q = new WrongCat();
+
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
+	delete meta;
+	meta = j;
+	j = i;
+	j->makeSound();
+	meta->makeSound();
+
+	k->makeSound();
+	q->makeSound();
+
+	delete meta;
+	delete i;
+	delete q;
+	delete k;
+
+	return (0);
+}
