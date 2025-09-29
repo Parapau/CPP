@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:07:22 by pafranco          #+#    #+#             */
-/*   Updated: 2025/09/29 18:41:51 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/09/29 18:42:09 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <iostream>
 #include <string>
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 class Dog: virtual public Animal
 {

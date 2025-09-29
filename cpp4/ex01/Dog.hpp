@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:07:22 by pafranco          #+#    #+#             */
-/*   Updated: 2025/09/22 20:31:28 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/09/29 18:21:32 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@
 
 class Dog: virtual public Animal
 {
-	protected:
-		std::string		type;
 	public:
 		Dog(void);
 		Dog(Dog &og);
 		Dog	&operator=(Dog &og);
-		virtual ~Dog(void);
+		~Dog(void);
 
 		void	makeSound(void) const;
 };

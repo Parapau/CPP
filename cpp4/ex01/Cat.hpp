@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:05:23 by pafranco          #+#    #+#             */
-/*   Updated: 2025/09/22 20:31:39 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/09/29 18:21:27 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@
 #include <string>
 #include "Animal.hpp"
 
-class Cat: virtual public Animal
+class Cat: public Animal
 {
-	protected:
-		std::string		type;
 	public:
 		Cat(void);
 		Cat(Cat &og);
 		Cat	&operator=(Cat &og);
-		virtual ~Cat(void);
+		~Cat(void);
 
 		void	makeSound(void) const;
 };

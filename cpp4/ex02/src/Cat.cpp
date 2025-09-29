@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:43:41 by pafranco          #+#    #+#             */
-/*   Updated: 2025/09/29 18:32:23 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/09/22 19:48:43 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 Cat::Cat(void)
 {
 	std::cout << "Constructing a cat" << std::endl;
-	setType("Cat");
-	std::cout << this->_type;
+	this->_type = "Cat";
 	setBrain(new Brain("The human gives me food, i must be god"));
 }
 

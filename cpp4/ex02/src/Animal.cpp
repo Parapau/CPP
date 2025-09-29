@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:08:45 by pafranco          #+#    #+#             */
-/*   Updated: 2025/09/29 20:38:49 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/09/22 20:35:12 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,8 @@ Animal::Animal(Animal &og)
 Animal	&Animal::operator=(Animal &og)
 {
 	std::cout << "Animal assignement overload called" << std::endl;
-	std::cout << "AAAAAAAA" << std::endl;
-	setType(og._type);
-	std::cout << "AAAAAAAA" << std::endl;
+	this->_type = og.getType();
 	setBrain(new Brain(*og.getBrain()));
-	std::cout << "AAAAAAAA" << std::endl;
 	return (*this);
 }
 

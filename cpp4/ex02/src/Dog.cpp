@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/22 16:43:41 by pafranco          #+#    #+#             */
-/*   Updated: 2025/09/29 18:32:23 by pafranco         ###   ########.fr       */
+/*   Created: 2025/09/22 16:49:59 by pafranco          #+#    #+#             */
+/*   Updated: 2025/09/22 19:48:48 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Cat.hpp"
+
+#include "../Dog.hpp"
 
 //CONSTRUCTOR
 
-Cat::Cat(void)
+Dog::Dog(void)
 {
-	std::cout << "Constructing a cat" << std::endl;
-	setType("Cat");
-	std::cout << this->_type;
-	setBrain(new Brain("The human gives me food, i must be god"));
+	std::cout << "Constructing a dog" << std::endl;
+	this->_type = "Dog";
+	setBrain(new Brain("The human gives me food, they must be god"));
 }
 
-Cat::Cat(Cat &og)
+Dog::Dog(Dog &og)
 {
-	std::cout << "Cloning a cat" << std::endl;
+	std::cout << "Cloning a dog" << std::endl;
 	setBrain(new Brain(*og.getBrain()));
 	this->_type = og.getType();
 }
 
 //OVERLOADS
 
-Cat	&Cat::operator=(Cat &og)
+Dog	&Dog::operator=(Dog &og)
 {
-	std::cout << "Cat assignement operator called" << std::endl;
+	std::cout << "Dog assignement operator called" << std::endl;
 	this->_type = og.getType();
 	setBrain(new Brain(*og.getBrain()));
 	return (*this);
@@ -41,14 +41,14 @@ Cat	&Cat::operator=(Cat &og)
 
 //METHODS
 
-void	Cat::makeSound(void) const
+void	Dog::makeSound(void) const
 {
-	std::cout << "Marrameu" << std::endl;
+	std::cout << "Bub Bub Bub" << std::endl;
 }
 
 //DESTRUCTORS
 
-Cat::~Cat(void)
+Dog::~Dog(void)
 {
-	std::cout << "A cat has been killed" << std::endl;
+	std::cout << "Making mocasines saltarines" << std::endl;
 }

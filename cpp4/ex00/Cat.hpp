@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:05:23 by pafranco          #+#    #+#             */
-/*   Updated: 2025/09/22 17:25:33 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/09/29 18:41:48 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 
 class Cat: virtual public Animal
 {
-	protected:
-		std::string		type;
 	public:
 		Cat(void);
 		Cat(Cat &og);

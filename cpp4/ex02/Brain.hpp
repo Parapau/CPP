@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/22 16:07:22 by pafranco          #+#    #+#             */
-/*   Updated: 2025/09/29 18:41:51 by pafranco         ###   ########.fr       */
+/*   Created: 2025/09/22 18:10:17 by pafranco          #+#    #+#             */
+/*   Updated: 2025/09/29 13:40:51 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 #include <iostream>
 #include <string>
-#include "Animal.hpp"
 
-class Dog: virtual public Animal
+class Brain
 {
+	private:
+		std::string		_thoughts[100];
 	public:
-		Dog(void);
-		Dog(Dog &og);
-		Dog	&operator=(Dog &og);
-		~Dog(void);
+		Brain(void);
+		Brain(std::string);
+		Brain(const Brain &og);
+		Brain	&operator=(const Brain &og);
+		~Brain(void);
 
-		void	makeSound(void) const;
+		void			think(std::string thought);
+		void			thinkOutLoud(void);
+
+		std::string		getThought(int n) const;
+		void			setThought(std::string thought, int n);
 };
+
+
 
 #endif

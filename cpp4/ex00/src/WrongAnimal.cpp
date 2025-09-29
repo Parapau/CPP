@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:08:45 by pafranco          #+#    #+#             */
-/*   Updated: 2025/09/22 17:39:06 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/09/29 20:43:20 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ void	WrongAnimal::makeSound(void) const
 
 WrongAnimal::~WrongAnimal(void)
 {
-//	std::cout << "Animal destructor called" << std::endl;
+	std::cout << "This animal has been put out of it's misery" << std::endl;
 }
