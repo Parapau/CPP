@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 17:04:05 by pafranco          #+#    #+#             */
-/*   Updated: 2025/09/29 18:37:36 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/09/30 16:29:18 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@ void	catBook(void)
 void	a(void)
 {
 	Cat		Maya;
-	Cat		Mixa;
 
 	Maya.getBrain()->thinkOutLoud();
 	Maya.getBrain()->think("I'm not a cat i'm, i'm a cattopotamus");
 	Maya.getBrain()->setThought("Hmmmm, if i don't get inside this box this instant i will die", 3);
 	Maya.getBrain()->thinkOutLoud();
-	Mixa.getBrain()->thinkOutLoud();
-	Mixa = Maya;
+	Cat Mixa = Maya;
 	Mixa.getBrain()->thinkOutLoud();
 }
 
