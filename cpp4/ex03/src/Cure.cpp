@@ -15,6 +15,7 @@ Cure::Cure(Cure &og)
 
 Cure::~Cure(void)
 {
+	std::cout << "😷🔫" << std::endl;
 }
 
 //OVERLOADS

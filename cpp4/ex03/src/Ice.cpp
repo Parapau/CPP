@@ -15,6 +15,7 @@ Ice::Ice(Ice &og)
 
 Ice::~Ice(void)
 {
+	std::cout << "🧊🔨" << std::endl;
 }
 
 //OVERLOADS

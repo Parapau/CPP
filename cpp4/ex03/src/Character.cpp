@@ -139,10 +139,10 @@ void	Character::use(int i, ICharacter &target)
 
 void	Character::sweepFloor(void)
 {
+	std::cout << "*whistling while sweeping the floor*" << std::endl;
 	for (std::list<AMateria *>::iterator i = Character::_floor.begin();
 			i != Character::_floor.end(); ++i)
 		delete *i;
-	std::cout << "*whistling while sweeping the floor*" << std::endl;
 }
 
 void	Character::drop(AMateria *m)

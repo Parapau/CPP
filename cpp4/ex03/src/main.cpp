@@ -43,6 +43,7 @@ int main()
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 	me->use(2, *bob);
+	bob->use(0, *me);
 
 	delete bob;
 	delete me;
