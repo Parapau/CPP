@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 14:20:15 by pafranco          #+#    #+#             */
-/*   Updated: 2025/10/28 15:36:03 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/11/19 15:50:09 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(void)
 	{
 		Bureaucrat		d(420);
 	}
-	catch (const std::exception &e)
+	catch (const std::exception & e)
 	{
 		std::cout << "Caught the following Exception: " << e.what()  << std::endl;
 	}
@@ -37,7 +37,7 @@ int	main(void)
 		std::cout << b << std::endl;
 		b.upgrade();
 	}
-	catch (const std::exception &e)
+	catch (const std::exception & e)
 	{
 		std::cout << "Caught the following Exception: " << e.what()  << std::endl;
 	}
@@ -46,7 +46,7 @@ int	main(void)
 		std::cout << a << std::endl;
 		a.downgrade();
 	}
-	catch (const std::exception &e)
+	catch (const std::exception & e)
 	{
 		std::cout << "Caught the following Exception: " << e.what()  << std::endl;
 	}
@@ -54,7 +54,7 @@ int	main(void)
 	{
 		Bureaucrat		e(0);
 	}
-	catch (const std::exception &e)
+	catch (const std::exception & e)
 	{
 		std::cout << "Caught the following Exception: " << e.what() << std:: endl;
 	}
