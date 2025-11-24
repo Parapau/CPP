@@ -6,12 +6,12 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 16:41:36 by pafranco          #+#    #+#             */
-/*   Updated: 2025/11/19 19:04:25 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/11/24 19:22:16 by tv               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_hPP
-# define FORM_hPP
+#ifndef AFORM_hPP
+# define AFORM_hPP
 
 #include <iostream>
 #include <string>
@@ -40,7 +40,7 @@ class Form
 		bool			getIsSigned(void);
 
 		void			beSigned(Bureaucrat &bar);
-		void			execute(Bureaucrat &bar);
+		virtual void	execute(Bureaucrat &bar);
 };
 
 #endif
