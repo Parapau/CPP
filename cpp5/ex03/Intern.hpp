@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/19 18:57:50 by pafranco          #+#    #+#             */
-/*   Updated: 2025/12/10 13:51:46 by pafranco         ###   ########.fr       */
+/*   Created: 2025/12/10 14:58:58 by pafranco          #+#    #+#             */
+/*   Updated: 2025/12/10 15:39:12 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
 #include "AForm.hpp"
-#include <fstream>
+#include "RobotomyRequest.hpp"
+#include "PresidentialPardon.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-class ShrubberyCreationForm: public Form
+class Intern
 {
-	private:
-		std::string		_target;
 	public:
-		ShrubberyCreationForm(void);
-		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm	&operator=(ShrubberyCreationForm &og);
-		~ShrubberyCreationForm(void);
+		Intern(void);
+		Intern(Intern &og);
+		Intern &operator=(Intern &og);
+		~Intern(void);
 
-		std::string		getTarget(void);
-
-		void			setTarget(std::string target);
-
-		void			carryOut(Bureaucrat &bar);
+		Form	*makeForm(std::string name, std::string target);
 };
 
 #endif
