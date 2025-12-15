@@ -44,11 +44,7 @@ void	ShrubberyCreationForm::setTarget(std::string target)
 
 void	ShrubberyCreationForm::carryOut(Bureaucrat &bar)
 {
-	std::string		useless;
-
-	useless = bar.getName();
-	if (useless != bar.getName())
-		return ;
+	(void)bar;
 
 	std::ofstream	outFile(getTarget().c_str());
 

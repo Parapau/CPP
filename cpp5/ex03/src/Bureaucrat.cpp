@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 12:37:16 by pafranco          #+#    #+#             */
-/*   Updated: 2025/12/10 13:35:17 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/12/15 15:41:43 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,23 +148,11 @@ const char* Bureaucrat::FormNotSignedException::what() const throw()
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
-{/*
-	std::string		message;
-	const char			*ret;
-
-	message = "Grade " + this->_grade + " is too high, you fucking idiot";
-	ret = message.c_str();
-	return (ret);*/
+{
 	return ("This grade is too high you fuckking idiot");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
-{/*
-	std::string		message;
-	const char			*ret;
-
-	message = "Grade " + this->_grade + " is too low, you fucking idiot";
-	ret = message.c_str();
-	return (ret)*/;
+{
 	return ("This grade is too low you fuckking idiot");
 }

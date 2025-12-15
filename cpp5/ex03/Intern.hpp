@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 14:58:58 by pafranco          #+#    #+#             */
-/*   Updated: 2025/12/10 15:39:12 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/12/15 15:55:43 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,13 @@ class Intern
 		Intern &operator=(Intern &og);
 		~Intern(void);
 
-		Form	*makeForm(std::string name, std::string target);
+		Form	*makeForm(std::string name, std::string target) const;
+
+	class NoSuchFormException: public std::exception
+	{
+		public:
+			const char* what() const throw();
+	};
 };
 
 #endif
