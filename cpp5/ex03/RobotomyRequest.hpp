@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 18:57:50 by pafranco          #+#    #+#             */
-/*   Updated: 2025/12/10 13:30:13 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:23:36 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ROBOTOMYREQUEST_HPP
 
 #include "AForm.hpp"
+#include <cstdlib>
+#include <time.h>
 
 class RobotomyRequest: public Form
 {

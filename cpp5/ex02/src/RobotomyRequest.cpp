@@ -44,6 +44,19 @@ void	RobotomyRequest::setTarget(std::string target)
 
 void	RobotomyRequest::carryOut(Bureaucrat &bar)
 {
-	std::cout << bar.getName() << " stge trist i dessolador que esta al portatil :(" <<
-		getTarget() << std::endl;
+	(void) bar;
+	std::cout << "BRRRRRRRRRRRRRRRRRR WIRRRRRRRRRRRRRRRRRRRRRRRRR beep boop seeep CRAACK BRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR" << std::endl;
+	srand(time(0));
+	if (rand() % 2 == 0)
+	{
+		std::cout << "Succes!!" << std::endl << "The robot " << getTarget() << " has been succesfully robotomized and is now just a shadow of their former self"
+		<< std::endl << "they will now spend the rest of their days as an empty shell of a robot not being able to comprehend what has happened but knowing for certain that something has been robbed from them and they will never get it back andthey won't ever be the same without it"
+		<< std::endl << "Congratulations! 😃👍" << std::endl;
+	}
+	else
+	{
+		std::cout << "Failure!!" << std::endl << "The robotomy on " << getTarget() << " has failed just leaving a major scar on their forehead" << std::endl
+		<< "They will now spend the rest of their days happy and free and live a full life eventually getting over the traumatizing event that was their attempted robotomy"
+		<< std:: endl << "Try harder next time 😡" << std::endl;
+	}
 }
