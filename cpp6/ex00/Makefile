@@ -6,11 +6,11 @@
 #    By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/02 12:53:07 by pafranco          #+#    #+#              #
-#    Updated: 2025/12/15 19:25:07 by pafranco         ###   ########.fr        #
+#    Updated: 2025/12/17 18:27:13 by pafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Bureaucracy
+NAME		= Catechumenate
 	
 CC			= c++
 FLAGS		= -Wall -Wextra -Werror -g -std=c++98
@@ -19,12 +19,12 @@ RM			= rm -rf
 SRCDIR = 	src/
 OBJDIR = 	obj/
 
-FILES		= main 
+FILES		= main ScalarConverter
 
 SRC			= $(addprefix $(SRCDIR), $(FILES:=.cpp))
 OBJ			= $(addprefix $(OBJDIR), $(FILES:=.o))
 DEPS		= $(addprefix $(OBJDIR), $(FILES:=.d))
-HEADER		=
+HEADER		= ScalarConverter.hpp
 
 all: $(NAME)
 

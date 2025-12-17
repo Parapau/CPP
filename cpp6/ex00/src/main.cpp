@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 19:18:19 by pafranco          #+#    #+#             */
-/*   Updated: 2025/12/15 19:24:53 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/12/17 19:58:49 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,17 @@
 
 int	main(void)
 {
-	std::cout << std::numeric_limits<double>::max() << std::endl
-		<< std::numeric_limits<float>::max() << std::endl
-		<< std::numeric_limits<int>::max() << std::endl;
+	ScalarConverter::convert("4");
+	std::cout << std::endl;
+	ScalarConverter::convert("-2");
+	std::cout << std::endl;
+	ScalarConverter::convert("c");
+	std::cout << std::endl;
+	ScalarConverter::convert("4.4989f");
+	std::cout << std::endl;
+	ScalarConverter::convert("4.4983");
+	std::cout << std::endl;
+	ScalarConverter::convert("nan");
+	std::cout << std::endl;
+	ScalarConverter::convert("-inff");
 }

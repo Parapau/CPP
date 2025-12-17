@@ -6,11 +6,12 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 16:49:48 by pafranco          #+#    #+#             */
-/*   Updated: 2025/12/15 19:32:44 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/12/17 19:54:46 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <stdlib.h>
 #include <string>
 
 enum Type
@@ -19,15 +20,9 @@ enum Type
 	in,
 	fl,
 	db,
+	spf,
+	spd,
 	er
-};
-
-enum ErrorStates
-{
-	IMPOSSIBLE,
-	SPECIAL,
-	NON_PRINT,
-	BAD_INPUT
 };
 
 class ScalarConverter
