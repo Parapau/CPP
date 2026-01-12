@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 17:03:23 by pafranco          #+#    #+#             */
-/*   Updated: 2025/12/17 19:57:50 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:47:00 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,6 @@
 #include <float.h>
 
 //FUNCTIONS
-/*
-void	putDecimals(std::string input, int type)
-{
-	std::string::const_iterator		i;
-	int								count;
-
-	count = 0;
-	i = input.begin();
-	while (*i != '.' && i != input.end())
-		i++;
-	std::cout << ".";
-	if (i == input.end())
-	{
-		std::cout << "0";
-		return;
-	}
-	i++;
-	while (*i != 'f' && i != input.end() && count <= 7)
-	{
-		if (type == 1)
-			count++;
-		std::cout << *i;
-		i++;
-	}
-}*/
 
 void	print(char c, int i, float f, double d, std::string input)
 {

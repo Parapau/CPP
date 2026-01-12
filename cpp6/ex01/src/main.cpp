@@ -5,27 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/15 19:18:19 by pafranco          #+#    #+#             */
-/*   Updated: 2026/01/12 15:14:25 by pafranco         ###   ########.fr       */
+/*   Created: 2026/01/12 16:13:52 by pafranco          #+#    #+#             */
+/*   Updated: 2026/01/12 16:21:04 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ScalarConverter.hpp"
-#include <limits>
+#include "../Serializer.hpp"
 
 int	main(void)
 {
-	ScalarConverter::convert("4");
-	std::cout << std::endl;
-	ScalarConverter::convert("-2");
-	std::cout << std::endl;
-	ScalarConverter::convert("c");
-	std::cout << std::endl;
-	ScalarConverter::convert("4.4989f");
-	std::cout << std::endl;
-	ScalarConverter::convert("4.205983");
-	std::cout << std::endl;
-	ScalarConverter::convert("nan");
-	std::cout << std::endl;
-	ScalarConverter::convert("-inff");
+	Data		data;
+	Data		*ptr;
+	uintptr_t	raw;
+
+	data.str = "Gugridigugridigu";
+	raw = Serializer::serialize(&data);
+	ptr = Serializer::deSerialize(raw);
+
+	std::cout << ptr->str << std::endl;
 }
