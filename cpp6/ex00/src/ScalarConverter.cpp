@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 17:03:23 by pafranco          #+#    #+#             */
-/*   Updated: 2026/01/12 15:47:00 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/01/19 15:46:05 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void	print(char c, int i, float f, double d, std::string input)
 	std::cout << "FLOAT: ";
 	if (d > FLT_MIN || d < FLT_MAX)
 	{
+		std::cout.precision(7);
 		std::cout << f ;
-		//putDecimals(input, 1);
 		std::cout << 'f' << std::endl;
 	}
 	else if (d > FLT_MAX)
 		std::cout << "Overflow" << std::endl;
 	else
 		std::cout << "Underflow" << std::endl;
+	std::cout.precision(15);
 	std::cout << "DOUBLE: " << d;
-	//putDecimals(input, 2);
 	std::cout << std::endl;
 }
 
