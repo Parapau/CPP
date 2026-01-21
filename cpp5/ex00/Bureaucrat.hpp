@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 12:19:39 by pafranco          #+#    #+#             */
-/*   Updated: 2025/11/19 15:50:12 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/01/14 14:45:47 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,13 @@ class Bureaucrat
 
 	class GradeTooHighException: public std::exception
 	{
-		private:
-			std::string		_grade;
 		public:
-//			GradeTooHighException(int grade);
-//
 			const char* what() const throw();
 	};
 
 	class GradeTooLowException: public std::exception
-	{/*
-		private:
-			std::string		_grade;
+	{
 		public:
-			GradeTooLowException(int grade);
-*/		public:
 			const char* what() const throw();
 	};
 };

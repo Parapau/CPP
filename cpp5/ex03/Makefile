@@ -6,7 +6,7 @@
 #    By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/02 12:53:07 by pafranco          #+#    #+#              #
-#    Updated: 2025/12/10 13:53:35 by pafranco         ###   ########.fr        #
+#    Updated: 2025/12/15 16:12:58 by pafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,14 @@ RM			= rm -rf
 SRCDIR = 	src/
 OBJDIR = 	obj/
 
-FILES		= main Bureaucrat AForm PresidentialPardon RobotomyRequest ShrubberyCreationForm
+FILES		= main Bureaucrat AForm PresidentialPardon RobotomyRequest \
+				ShrubberyCreationForm Intern
 
 SRC			= $(addprefix $(SRCDIR), $(FILES:=.cpp))
 OBJ			= $(addprefix $(OBJDIR), $(FILES:=.o))
 DEPS		= $(addprefix $(OBJDIR), $(FILES:=.d))
-HEADER		= Bureaucrat.hpp AForm.hpp PresidentialPardon.hpp RobotomyRequest.hpp ShrubberyCreationForm.hpp
+HEADER		= Bureaucrat.hpp AForm.hpp PresidentialPardon.hpp \
+				RobotomyRequest.hpp ShrubberyCreationForm.hpp Intern.hpp
 
 all: $(NAME)
 

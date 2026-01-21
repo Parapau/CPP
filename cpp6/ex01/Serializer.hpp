@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardon.hpp                             :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/19 18:57:50 by pafranco          #+#    #+#             */
-/*   Updated: 2025/12/10 13:30:35 by pafranco         ###   ########.fr       */
+/*   Created: 2026/01/12 15:47:27 by pafranco          #+#    #+#             */
+/*   Updated: 2026/01/12 16:23:04 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIALPARDON_HPP
-# define PRESIDENTIALPARDON_HPP
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
-#include "AForm.hpp"
+#include <stdint.h>
+#include <iostream>
 
-class PresidentialPardon: public Form
+struct Data
+{
+	std::string		str;
+};
+
+class Serializer
 {
 	private:
-		std::string		_target;
+		Serializer(void);
 	public:
-		PresidentialPardon(void);
-		PresidentialPardon(std::string target);
-		PresidentialPardon	&operator=(PresidentialPardon &og);
-		~PresidentialPardon(void);
-
-		std::string		getTarget(void);
-
-		void			setTarget(std::string target);
-
-		void			carryOut(Bureaucrat &bar);
+		static uintptr_t	serialize(Data *ptr);
+		static Data			*deSerialize(uintptr_t);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 12:37:16 by pafranco          #+#    #+#             */
-/*   Updated: 2025/12/17 17:02:55 by pafranco         ###   ########.fr       */
+/*   Updated: 2025/12/15 15:41:43 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void	Bureaucrat::setName(std::string name)
 void	Bureaucrat::setGrade(int grade)
 {
 	if (grade > 150)
-		throw (Bureaucrat::GradeTooLowException());
+		throw (Bureaucrat::GradeTooLowException());//grade));
 	if (grade < 1)
-		throw (Bureaucrat::GradeTooHighException());
+		throw (Bureaucrat::GradeTooHighException());//grade));
 	this->_grade = grade;
 }
 
@@ -99,7 +99,7 @@ void	Bureaucrat::upgrade(void)
 
 	grade = getGrade();
 	if (grade <= 1)
-		throw (Bureaucrat::GradeTooHighException());
+		throw (Bureaucrat::GradeTooHighException());//grade - (grade == 1)));
 	setGrade(grade - 1);
 }
 
@@ -109,7 +109,7 @@ void	Bureaucrat::downgrade(void)
 
 	grade = getGrade();
 	if (grade >= 150)
-		throw (Bureaucrat::GradeTooLowException());
+		throw (Bureaucrat::GradeTooLowException());//grade + (grade == 150)));
 	setGrade(grade + 1);
 }
 

@@ -6,11 +6,11 @@
 #    By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/02 12:53:07 by pafranco          #+#    #+#              #
-#    Updated: 2025/12/10 13:53:35 by pafranco         ###   ########.fr        #
+#    Updated: 2026/01/19 12:45:59 by pafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= Bureaucracy
+NAME		= Catechumenate
 	
 CC			= c++
 FLAGS		= -Wall -Wextra -Werror -g -std=c++98
@@ -19,12 +19,12 @@ RM			= rm -rf
 SRCDIR = 	src/
 OBJDIR = 	obj/
 
-FILES		= main Bureaucrat AForm PresidentialPardon RobotomyRequest ShrubberyCreationForm
+FILES		= main Classes
 
 SRC			= $(addprefix $(SRCDIR), $(FILES:=.cpp))
 OBJ			= $(addprefix $(OBJDIR), $(FILES:=.o))
 DEPS		= $(addprefix $(OBJDIR), $(FILES:=.d))
-HEADER		= Bureaucrat.hpp AForm.hpp PresidentialPardon.hpp RobotomyRequest.hpp ShrubberyCreationForm.hpp
+HEADER		= Classes.hpp
 
 all: $(NAME)
 
