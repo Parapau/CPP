@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 17:03:23 by pafranco          #+#    #+#             */
-/*   Updated: 2026/01/19 15:46:05 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/01/21 12:00:49 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 
 //FUNCTIONS
 
-void	print(char c, int i, float f, double d, std::string input)
+void	print(char c, int i, float f, double d)
 {
-	(void) input;
 	std::cout << "CHAR: ";
 	if (isprint(c))
 		std::cout << '\'' << c << '\'' << std::endl;
@@ -37,6 +36,8 @@ void	print(char c, int i, float f, double d, std::string input)
 	{
 		std::cout.precision(7);
 		std::cout << f ;
+		if (f == i)
+			std::cout << ".0";
 		std::cout << 'f' << std::endl;
 	}
 	else if (d > FLT_MAX)
@@ -45,6 +46,8 @@ void	print(char c, int i, float f, double d, std::string input)
 		std::cout << "Underflow" << std::endl;
 	std::cout.precision(15);
 	std::cout << "DOUBLE: " << d;
+	if (f == i)
+		std::cout << ".0";
 	std::cout << std::endl;
 }
 
@@ -155,5 +158,5 @@ void	ScalarConverter::convert(std::string input)
 		default:
 			std::cout << input <<" If you see me, weep " << type << std::endl;	
 	}
-	print(c, i, f, d, input);
+	print(c, i, f, d);
 }

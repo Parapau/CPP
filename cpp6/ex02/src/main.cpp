@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 15:31:20 by pafranco          #+#    #+#             */
-/*   Updated: 2026/01/19 13:21:28 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/01/21 12:04:49 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	identify(Base *p)
 	else if (c != 0)
 	{
 		std::cout << "This object is of C class" << std::endl
-			<< "(not sea class you idiot, C class you c)" << std::endl;
+			<< "(not sea class, C class you c)" << std::endl;
 	}
 	else
 		std::cout << "The programer is a fucking moron" << std::endl;
@@ -98,7 +98,7 @@ void	identify(Base &p)
 	{
 		case 3:
 			std::cout << "This object is of C class" << std::endl
-				<< "(not sea class you idiot, C class you c)" << std::endl;
+				<< "(not sea class, C class you c)" << std::endl;
 			break;
 		case 4:
 			std::cout << "This object is of B class" << std::endl
