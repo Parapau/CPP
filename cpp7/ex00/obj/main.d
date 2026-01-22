@@ -1,1 +1,1 @@
-obj/main.o: src/main.cpp src/../templates.hpp
+obj/main.o: src/main.cpp src/../Templates.hpp
