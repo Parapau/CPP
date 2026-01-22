@@ -1,13 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pafranco <pafranco@student.42barcelona.co  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/21 15:08:33 by pafranco          #+#    #+#             */
+/*   Updated: 2026/01/21 15:49:56 by pafranco         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#ifndef ITER_HPP
+# define ITER_HPP
 
-template <typename T1, typename T2> void iter (T1 &array, T2 &len, void (*func)(const T1*))
+#include <iostream>
+
+template <typename T1, typename T2>
+void	iter(T1 &arr, int len, T2 func)
 {
 	int		i;
 
 	i = 0;
 	while (i < len)
-	{
-		func(array[i]);
+	{	
+		func(arr[i]);
 		i++;
 	}
 }
+
+template <typename T>
+void	prunt(T &x)
+{
+	std::cout << x << std::endl;
+}
+
+#endif

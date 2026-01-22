@@ -6,7 +6,7 @@
 #    By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/02 12:53:07 by pafranco          #+#    #+#              #
-#    Updated: 2026/01/03 17:08:33 by tv               ###   ########.fr        #
+#    Updated: 2026/01/21 15:41:43 by pafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,12 @@ RM			= rm -rf
 SRCDIR = 	src/
 OBJDIR = 	obj/
 
-FILES		= main 
+FILES		= main
 
 SRC			= $(addprefix $(SRCDIR), $(FILES:=.cpp))
 OBJ			= $(addprefix $(OBJDIR), $(FILES:=.o))
 DEPS		= $(addprefix $(OBJDIR), $(FILES:=.d))
-HEADER		= templates.hpp
+HEADER		= iter.hpp
 
 all: $(NAME)
 

@@ -1,28 +1,28 @@
-#include "../templates.hpp"
+#include "../iter.hpp"
 #include <string>
 #include <iostream>
 
+void	pront(std::string str)
+{
+	std::cout << str << std::endl;
+}
+
+void	isNumber(int num)
+{
+	int num2;
+
+	num2 = num;
+	if (num == num2)
+		std::cout << "yes, " << num << " is indeed a number" << std::endl << "this function is stupid" << std::endl;
+	else
+		std::cout << "no numbers here, move along" << std::endl;
+}
+
 int main(void)
 {
-	std::string		s1;
-	std::string		s2;
-	int				i1;
-	int				i2;
+	std::string		array1[6] = {"les", "patates", "fregides", "estan", "molt", "bones"};
+	int				array2[3] = {4, 2, 0};
 
-	i1 = 1;
-	i2 = 2;
-	s1 = "patata";
-	s2 =  "fregida";
-	std::cout << "i1 = " << i1 << std::endl
-		<< "i2 = " << i2 << std::endl
-		<< "s1 = " << s1 << std::endl
-		<< "s2 = " << s2 << std::endl << std::endl
-		<< "max i1/i2 = " << myMax(i1, i2) << " min i1/i2 = " << myMin(i1, i2)
-		<< std::endl << std::endl;
-	mySwap(i1, i2);
-	mySwap(s1, s2);
-	std::cout << "i1 = " << i1 << std::endl
-		<< "i2 = " << i2 << std::endl
-		<< "s1 = " << s1 << std::endl
-		<< "s2 = " << s2 << std::endl;
+	iter(array1, 6, pront);
+	iter(array2, 3, isNumber);
 }
