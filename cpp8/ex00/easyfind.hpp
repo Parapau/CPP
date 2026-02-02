@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 15:08:33 by pafranco          #+#    #+#             */
-/*   Updated: 2026/01/27 15:45:06 by tv               ###   ########.fr       */
+/*   Updated: 2026/02/02 16:19:37 by tv               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ class	ElementNotFound: public std::exception
 };
 
 template <typename T>
-int	*easyfind(T &cont, int n)
+int	easyfind(T &cont, int n)
 {
 	typename	T::iterator elem;
 
 	elem = find(cont.begin(), cont.end(), n);
 	if (elem == cont.end())
 		throw (ElementNotFound());
-	return (&(*elem));
+	return (*elem);
 }
 
 
