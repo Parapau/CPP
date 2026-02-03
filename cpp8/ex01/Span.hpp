@@ -2,22 +2,31 @@
 # define SPAN_HPP
 
 #include <iostream>
+#include <set>
 
 class Span
 {
 	private:
-		int		*arr;
+		std::multiset<int>		st;
 		unsigned int		size;
+		unsigned int		mSize;
+
+		void				setSize(unsigned int n);
+		void				setMSize(unsigned int n);
+		void				setSet(std::multiset<int> st);
+		int					getSize(void);
+		int					getMSize(void);
+		std::multiset<int>	getSet(void);
 	public:
 		Span(void);
-		Span(int n);
+		Span(unsigned int n);
 		Span(Span &og);
 		~Span(void);
+		Span	&operator=(Span &og);
 
-		int		getSize(void);
-		int		shortestSpan(void);
-		int		longestSpan(void);
-		void	addNumber(int num);
+		int					shortestSpan(void);
+		int					longestSpan(void);
+		void				addNumber(int num);
 };
 
 #endif
