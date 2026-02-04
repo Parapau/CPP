@@ -1,55 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/04 13:23:05 by pafranco          #+#    #+#             */
+/*   Updated: 2026/02/04 14:49:35 by pafranco         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-template <typename T>
-Array<T>::Array(void): _size(0)
+#include "../Span.hpp"
+
+int	main (void)
 {
-	arr = new	T[0];
+	Span	pan(5);
+	Span	pon(10000);
+
+	pan.addNumber(1);
+	pan.addNumber(3);
+	pan.addNumber(-4);
+	pan.addNumber(5);
+	pan.addNumber(100);
+
+	std::cout << pan.longestSpan() << "	" << pan.shortestSpan() << std::endl;
+
+	pon.addNumber(-10000, 500);
+
+	std::cout << pon.shortestSpan() << "	" << pon.longestSpan() << std::endl;
 }
-
-template <typename T>
-Array<T>::Array(unsigned int n): _size(n)
-{
-	arr = new	T[n];
-}
-
-template <typename T>
-Array<T>::Array(Array &og): _size(og.size())
-{
-	arr = new T[og.size()];
-	for (unsigned int i = 0; i < og.size() ; i++)
-		arr[i] = og[i];
-}
-
-//DESTRUCTOR
-
-template <typename T>
-Array<T>::~Array(void)
-{
-	delete[] arr;
-}
-
-//OVERLOADS
-
-template <typename T>
-Array<T>	&Array<T>::operator=(Array &og)
-{
-	arr = new T[og.size()];
-	for (unsigned int i = 0; i < og.size() ; i++)
-		arr[i] = og[i];
-	return (*this);
-}
-
-template <typename T>
-T	&Array<T>::operator[](unsigned int n)
-{
-	if (n >= size())
-		throw (std::exception());
-	return (arr[n]);
-}
-
-template <typename T>
-unsigned int	Array<T>::size(void)
-{
-	return (this->_size);
-}
-
-#endif
