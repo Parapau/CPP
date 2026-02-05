@@ -9,10 +9,8 @@ class Span
 {
 	private:
 		std::multiset<int>		st;
-		unsigned int			size;
 		unsigned int			mSize;
 
-		void				setSize(unsigned int n);
 		void				setMSize(unsigned int n);
 		void				setSet(std::multiset<int> st);
 		int					getSize(void);

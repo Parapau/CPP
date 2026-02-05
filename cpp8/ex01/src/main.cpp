@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 13:23:05 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/04 14:49:35 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/05 12:30:57 by tv               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main (void)
 {
 	Span	pan(5);
+	Span	pin(5);
 	Span	pon(10000);
 
 	pan.addNumber(1);
@@ -23,9 +24,13 @@ int	main (void)
 	pan.addNumber(5);
 	pan.addNumber(100);
 
-	std::cout << pan.longestSpan() << "	" << pan.shortestSpan() << std::endl;
+	std::cout << pan.longestSpan() << std::endl << pan.shortestSpan() << std::endl;
+
+	pin.addNumber(0, 10);
+
+	std::cout << pin.longestSpan() << std::endl << pin.shortestSpan() << std::endl;
 
 	pon.addNumber(-10000, 500);
 
-	std::cout << pon.shortestSpan() << "	" << pon.longestSpan() << std::endl;
+	std::cout << pon.shortestSpan() << std::endl << pon.longestSpan() << std::endl;
 }
