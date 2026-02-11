@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 15:56:21 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/09 17:13:24 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/11 13:37:23 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,140 +16,177 @@
 
 //CONSTRUCTORS
 
-StackIterator::StackIterator(void):i(0)
+template <typename T>
+StackIterator<T>::StackIterator(void):i(0)
 {
 }
 
 template <typename T>
-StackIterator::StackIterator(MutantStack<T> *ptr):i(0)
+StackIterator<T>::StackIterator(MutantStack<T> *ptr):i(0), ms(ptr)
 {
-	elem = ptr;
 }
 
-StackIterator::StackIterator(const StackIterator &Iterator):i(Iterator.getI())
+template <typename T>
+StackIterator<T>::StackIterator(MutantStack<T> *ptr, int i):i(i), ms(ptr)
+{
+}
+
+template <typename T>
+StackIterator<T>::StackIterator(const StackIterator &Iterator):i(Iterator.getI())
 {
 	*this = Iterator;
 }
 
 //DESTRUCTOR
 
-StackIterator::~StackIterator(void)
+template <typename T>
+StackIterator<T>::~StackIterator(void)//leak?????
 {
 }
 
 
 //OVERLOADS
 
-StackIterator	StackIterator::operator=(const StackIterator &other)
+template <typename T>
+StackIterator<T>	StackIterator<T>::operator=(const StackIterator &other)
 {
-	this->elem = other.elem;
+	this->ms = other.getPtr();
+	this->i = other.getI();
 	return (*this);
 }
 
 template <typename T>
-StackIterator	StackIterator::operator=(MutantStack<T> &other)
+StackIterator<T>	StackIterator<T>::operator=(MutantStack<T> &other)
 {
-	this->elem = other.elem;
+	this->ms = other.getPtr();
+	this->i = other.getI();
 	return (*this);
-}
-
-bool		StackIterator::operator==(const StackIterator &other)
-{
-	return (elem == other.elem);
-}
-
-bool		StackIterator::operator!=(const StackIterator &other)
-{
-	return (elem != other.elem);
-}
-
-
-StackIterator	&StackIterator::operator+=(const difference_type &mov)
-{
-	elem += mov;
-	return (*this);
-}
-
-StackIterator	&StackIterator::operator-=(const difference_type &mov)
-{
-	elem -= mov;
-	return (*this);
-}
-
-StackIterator	&StackIterator::operator++(void)
-{
-	elem += 1;
-	return (*this);
-}
-
-StackIterator	&StackIterator::operator--(void)
-{
-	elem -= 1;
-	return (*this);
-}
-
-StackIterator	StackIterator::operator++(int)
-{
-	elem += 1;
-	return (*this);
-}
-
-StackIterator	StackIterator::operator--(int)
-{
-	elem -= 1;
-	return (*this);
-}
-
-StackIterator	StackIterator::operator+(const difference_type &mov)
-{
-	elem += mov;
-	return (*this);
-}
-
-StackIterator	StackIterator::operator-(const difference_type &mov)
-{
-	elem -= mov;
-	return (*this);
-}
-
-StackIterator::difference_type	StackIterator::operator-(const StackIterator &it)
-{
-	return (std::distance(this->elem, it.elem));
 }
 
 template <typename T>
-MutantStack<T>	&StackIterator::operator*(void)
+bool		StackIterator<T>::operator==(const StackIterator &other)
 {
-	return (*getPtr<T>());
+	return (getI() == other.getI() && this->getPtr() == other.getPtr());
 }
 
 template <typename T>
-const MutantStack<T>	&StackIterator::operator*(void) const
+bool		StackIterator<T>::operator!=(const StackIterator &other)
 {
-	return (*getPtr<T>());
+	return (getI() != other.getI() && this->getPtr() != other.getPtr());
 }
 
 template <typename T>
-MutantStack<T>	*StackIterator::operator->(void)
+StackIterator<T>	&StackIterator<T>::operator+=(const int mov)
 {
-	return (getPtr<T>());
+	this->i += mov;
+	if (getI() >= getPtr()->size())
+		this->i = getPtr()->size();
+	return (*this);
+}
+
+template <typename T>
+StackIterator<T>	&StackIterator<T>::operator-=(const int mov)
+{
+	this->i -= mov;
+	if (getI() < 0)
+		this->i = 0;
+	return (*this);
+}
+
+template <typename T>
+StackIterator<T>	&StackIterator<T>::operator++(void)
+{
+	this->i += 1;
+	if (getI() >= getPtr()->size())
+		getI() = getPtr()->size() + 1;
+	return (*this);
+}
+
+template <typename T>
+StackIterator<T>	&StackIterator<T>::operator--(void)
+{
+	this->i -= 1;
+	if (getI() < 0)
+		i = 0;
+	return (*this);
+}
+
+template <typename T>
+StackIterator<T>	StackIterator<T>::operator++(int)
+{
+	this->i += 1;
+	if (getI() >= ms->size())
+		getI() = getPtr()->size() + 1;
+	return (*this);
+}
+
+template <typename T>
+StackIterator<T>	StackIterator<T>::operator--(int)
+{
+	this->i -= 1;
+	if (getI() < 0)
+		this->i = 0;
+	return (*this);
+}
+
+template <typename T>
+StackIterator<T>	StackIterator<T>::operator+(const int mov)
+{
+	this->i += mov;
+	if (getI() >= ms->size())
+		this->i = ms->size() + 1;
+	return (*this);
+}
+
+template <typename T>
+StackIterator<T>	StackIterator<T>::operator-(const int mov)
+{
+	this->i -= mov;
+	if (getI() < 0)
+		this->i = 0;
+	return (*this);
+}
+
+template <typename T>
+int	StackIterator<T>::operator-(const StackIterator &it)
+{
+	return (getI() - it.getI());
+}
+
+template <typename T>
+T	&StackIterator<T>::operator*(void)
+{
+	return (getPtr()->getPos(getI()));
+}
+
+template <typename T>
+const T	&StackIterator<T>::operator*(void) const
+{
+	return (getPtr()->getPos(getI()));
+}
+
+template <typename T>
+T	*StackIterator<T>::operator->(void)
+{
+	return (&getPtr()->getPos(getI()));
 }
 
 //GETTERS
 
 template <typename T>
-MutantStack<T>	*StackIterator::getPtr(void) const
+MutantStack<T>	*StackIterator<T>::getPtr(void) const
 {
-	return (elem);
+	return (ms);
 }
 
 template <typename T>
-const MutantStack<T>	*StackIterator::getConstPtr(void) const
+const MutantStack<T>	*StackIterator<T>::getConstPtr(void) const
 {
-	return (elem);
+	return (ms);
 }
 
-int		StackIterator::getI(void) const
+template <typename T>
+int		StackIterator<T>::getI(void) const
 {
 	return (this->i);
 }
@@ -158,89 +195,119 @@ int		StackIterator::getI(void) const
 
 //CONSTRUCTORS
 
-StackReverseIterator::StackReverseIterator(void)
+template <typename T>
+StackReverseIterator<T>::StackReverseIterator(void)
 {
 }
 
 template <typename T>
-StackReverseIterator::StackReverseIterator(MutantStack<T> *ptr)
+StackReverseIterator<T>::StackReverseIterator(MutantStack<T> *ptr)
 {
-	elem = ptr;
+	this->i = ptr->size() - 1;
+	this->ms = ptr;
 }
 
-StackReverseIterator::StackReverseIterator(const StackReverseIterator &Iterator)
+template <typename T>
+StackReverseIterator<T>::StackReverseIterator(const StackReverseIterator &Iterator)
 {
 	*this = Iterator;
 }
 
 //DESTRUCTOR
 
-StackReverseIterator::~StackReverseIterator(void)
+template <typename T>
+StackReverseIterator<T>::~StackReverseIterator(void)
 {
 }
 
 //OVERLOADS
 
-bool		StackReverseIterator::operator==(const StackReverseIterator &other)
+template <typename T>
+bool		StackReverseIterator<T>::operator==(const StackReverseIterator &other)
 {
-	return (elem == other.elem);
+	return (this->getI() != other.getI() && this->getPtr() != other.getPtr());
 }
 
-bool		StackReverseIterator::operator!=(const StackReverseIterator &other)
+template <typename T>
+bool		StackReverseIterator<T>::operator!=(const StackReverseIterator &other)
 {
-	return (elem != other.elem);
+	return (this->getI() != other.getI() && this->getPtr() != other.getPtr());
 }
 
-
-StackReverseIterator	&StackReverseIterator::operator+=(const difference_type &mov)
+template <typename T>
+StackReverseIterator<T>	&StackReverseIterator<T>::operator+=(const int mov)
 {
-	elem += mov;
+	this->i -= mov;
+	if (this->getI() < -1)
+		this->i = -1;
 	return (*this);
 }
 
-StackReverseIterator	&StackReverseIterator::operator-=(const difference_type &mov)
+template <typename T>
+StackReverseIterator<T>	&StackReverseIterator<T>::operator-=(const int mov)
 {
-	elem -= mov;
+	this->i += mov;
+	if (this->getI() > this->getPtr()->size())
+		this->i = this->getPtr()->size() - 1;
 	return (*this);
 }
 
-StackReverseIterator	&StackReverseIterator::operator++(void)
+template <typename T>
+StackReverseIterator<T>	&StackReverseIterator<T>::operator++(void)
 {
-	elem += 1;
+	this->i -= 1;
+	if (this->getI() < -1)
+		this->i = -1;
 	return (*this);
 }
 
-StackReverseIterator	&StackReverseIterator::operator--(void)
+template <typename T>
+StackReverseIterator<T>	&StackReverseIterator<T>::operator--(void)
 {
-	elem -= 1;
+	this->i += 1;
+	if (this->getI() > this->getPtr()->size())
+		this->i = this->getPtr()->size() - 1;
 	return (*this);
 }
 
-StackReverseIterator	StackReverseIterator::operator++(int)
+template <typename T>
+StackReverseIterator<T>	StackReverseIterator<T>::operator++(int)
 {
-	elem += 1;
+	this->i -= 1;
+	if (this->getI() < -1)
+		this->i = -1;
 	return (*this);
 }
 
-StackReverseIterator	StackReverseIterator::operator--(int)
+template <typename T>
+StackReverseIterator<T>	StackReverseIterator<T>::operator--(int)
 {
-	elem -= 1;
+	this->i += 1;
+	if (this->getI() > this->getPtr()->size())
+		this->i = this->getPtr()->size() - 1;
 	return (*this);
 }
 
-StackReverseIterator	StackReverseIterator::operator+(const difference_type &mov)
+template <typename T>
+StackReverseIterator<T>	StackReverseIterator<T>::operator+(const int mov)
 {
-	elem += mov;
+	this->i -= mov;
+	if (this->getI() < -1)
+		this->i = -1;
 	return (*this);
 }
 
-StackReverseIterator	StackReverseIterator::operator-(const difference_type &mov)
+template <typename T>
+StackReverseIterator<T>	StackReverseIterator<T>::operator-(const int mov)
 {
-	elem -= mov;
+	this->i += mov;
+	if (this->getI() > this->getPtr()->size())
+		this->i = this->getPtr()->size() - 1;
 	return (*this);
 }
 
-StackReverseIterator::difference_type	StackReverseIterator::operator-(const StackReverseIterator &it)
+template <typename T>
+int	StackReverseIterator<T>::operator-(const StackReverseIterator &it)
 {
-	return (std::distance(this->elem, it.elem));
+	return (this->getI() - it.getI());
 }

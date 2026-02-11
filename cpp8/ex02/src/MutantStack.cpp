@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 12:14:03 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/09 17:03:41 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/11 15:34:12 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ MutantStack<T>::MutantStack(void)
 }
 
 template <typename T>
-MutantStack<T>::MutantStack(const MutantStack<T> &og): stack(og.getStack())
+MutantStack<T>::MutantStack(const MutantStack &og): stack(og.getStack())
 {
 }
 
@@ -34,12 +34,29 @@ MutantStack<T>::~MutantStack(void)
 
 //ITERATIONING
 
-//template <typename T>
-/*
-StackIterator	MutantStack<T>::begin(void)
+template <typename T>
+StackIterator<T>	MutantStack<T>::begin(void)
 {
-	return (0);
-}*/
+	return (StackIterator<T>(this));
+}
+
+template <typename T>
+StackIterator<T>	MutantStack<T>::end(void)
+{
+	return (StackIterator<T>(this, size()));
+}
+
+template <typename T>
+StackIterator<T>	MutantStack<T>::rbegin(void)
+{
+	return (StackIterator<T>(this, size() - 1));
+}
+
+template <typename T>
+StackIterator<T>	MutantStack<T>::rend(void)
+{
+	return (StackIterator<T>(this, -1));
+}
 
 //OVERLOADS
 
@@ -120,15 +137,15 @@ int	MutantStack<T>::size(void) const
 template <typename T>
 void	MutantStack<T>::swap(MutantStack &other)
 {
-	getStack().swap();
+	getStack().swap(other);
 }
-
+/*
 template <typename T>
 void	MutantStack<T>::emplace(T &&args)
 {
 	getStack().emplace(args);
 }
-
+*/
 //GETTERS
 
 template <typename T>
@@ -143,7 +160,7 @@ T				&MutantStack<T>::getPos(int n)
 	std::stack<T>	iter = (*this);
 	int				i;
 
-	for (i = 0; i <= n && i < size(); i++)//Potser he d'acceptar que sigui major per fer la "null temrinacio" del iter
+	for (i = 0; i <= n && i < size(); i++)
 		iter.pop();
 	if (i < n)
 		throw (std::exception());//TODO excepcio custom (possibly)
