@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 12:14:03 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/11 15:34:12 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/13 14:34:39 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ MutantStack<T>::MutantStack(const MutantStack &og): stack(og.getStack())
 template <typename T>
 MutantStack<T>::~MutantStack(void)
 {
-	delete	(getStack());
 }
 
 //ITERATIONING
@@ -96,6 +95,21 @@ bool		MutantStack<T>::operator>(const MutantStack<T> &comp)
 	return (*this > comp);
 }
 
+template <typename T>
+std::ostream&	operator<<(std::ostream &o, MutantStack<T> &og)
+{
+	std::stack<T>	iter = (og.getStack());
+
+	for (int i = 0; i < og.size(); i++)
+	{
+		std::cout << og.top() << " ";
+		o << og.top() << " ";
+		iter.pop();
+	}
+	o << std::endl;
+	std::cout << std::endl;
+	return (o);
+}
 //METHODS
 
 template <typename T>
@@ -113,25 +127,25 @@ void	MutantStack<T>::pop(void)
 template <typename T>
 T	&MutantStack<T>::top(void)
 {
-	getStack().top();
+	return (getStack().top());
 }
 
 template <typename T>
 const T	&MutantStack<T>::top(void) const
 {
-	getStack().top();
+	return (getStack().top());
 }
 
 template <typename T>
 bool	MutantStack<T>::empty(void) const
 {
-	getStack().empty();
+	return (getStack().empty());
 }
 
 template <typename T>
 int	MutantStack<T>::size(void) const
 {
-	getStack().size();
+	return (stack.size());
 }
 
 template <typename T>
@@ -139,6 +153,7 @@ void	MutantStack<T>::swap(MutantStack &other)
 {
 	getStack().swap(other);
 }
+
 /*
 template <typename T>
 void	MutantStack<T>::emplace(T &&args)
@@ -146,6 +161,7 @@ void	MutantStack<T>::emplace(T &&args)
 	getStack().emplace(args);
 }
 */
+
 //GETTERS
 
 template <typename T>
@@ -157,7 +173,7 @@ std::stack<T>	&MutantStack<T>::getStack(void)
 template <typename T>
 T				&MutantStack<T>::getPos(int n)
 {
-	std::stack<T>	iter = (*this);
+	std::stack<T>	iter = (getStack());
 	int				i;
 
 	for (i = 0; i <= n && i < size(); i++)

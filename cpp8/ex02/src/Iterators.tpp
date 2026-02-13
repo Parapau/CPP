@@ -98,7 +98,7 @@ StackIterator<T>	&StackIterator<T>::operator++(void)
 {
 	this->i += 1;
 	if (getI() >= getPtr()->size())
-		getI() = getPtr()->size() + 1;
+		this->i = getPtr()->size() + 1;
 	return (*this);
 }
 
@@ -116,7 +116,7 @@ StackIterator<T>	StackIterator<T>::operator++(int)
 {
 	this->i += 1;
 	if (getI() >= ms->size())
-		getI() = getPtr()->size() + 1;
+		this->i = getPtr()->size() + 1;
 	return (*this);
 }
 

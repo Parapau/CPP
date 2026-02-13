@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 11:24:01 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/11 15:48:31 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/13 15:40:36 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class MutantStack
 	private:
 		std::stack<T>	stack;
 
-		std::stack<T>	&getStack();
 	public:
 		MutantStack(void);
 		MutantStack(const MutantStack &og);
@@ -39,13 +38,16 @@ class MutantStack
 		typedef StackIterator<T>			iterator;
 		typedef StackReverseIterator<T>		reverse_iterator;
 
-		iterator	begin(void);
-		iterator	end(void);
+		iterator		begin(void);
+		iterator		end(void);
 
-		iterator	rbegin(void);
-		iterator	rend(void);
+		iterator		rbegin(void);
+		iterator		rend(void);
 
-		T			&getPos(int i);
+		void			print(void);
+
+		std::stack<T>	&getStack(void);
+		T				&getPos(int i);
 		//Basic stack stuff
 		bool		operator==(const MutantStack &comp);//the man has a different prototype
 		bool		operator!=(const MutantStack &comp);//but it may be for a newer version
@@ -63,6 +65,9 @@ class MutantStack
 		void		swap(MutantStack &other);//apparently emplace is from 11 :')
 	//	void		emplace(T &&args);//emplace is for when you are adding a non-primitive variable to the stack
 };//push makes a temporary copy of the arg before adding it to the stack, emplace creates it directly, it's more efficient for objects (especially complex ones)
+
+template <typename T>
+std::ostream&	operator<<(std::ostream &o, MutantStack<T> &og);
 
 template <typename T>
 class StackIterator
@@ -137,5 +142,9 @@ class StackReverseIterator: public StackIterator<T>
 
 		int						operator-(const StackReverseIterator &it);
 };
+
+#include "src/MutantStack.tpp"
+#include "src/Iterators.tpp"
+
 
 #endif

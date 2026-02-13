@@ -6,7 +6,7 @@
 #    By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/02 12:53:07 by pafranco          #+#    #+#              #
-#    Updated: 2026/02/11 15:47:01 by pafranco         ###   ########.fr        #
+#    Updated: 2026/02/13 15:10:09 by pafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,12 @@ RM			= rm -rf
 SRCDIR = 	src/
 OBJDIR = 	obj/
 
-FILES		= MutantStack Iterators main
+FILES		= main
 
 SRC			= $(addprefix $(SRCDIR), $(FILES:=.cpp))
 OBJ			= $(addprefix $(OBJDIR), $(FILES:=.o))
 DEPS		= $(addprefix $(OBJDIR), $(FILES:=.d))
-HEADER		= MutantStack.hpp
+HEADER		= MutantStack.hpp src/MutantStack.tpp src/Iterators.tpp
 
 all: $(NAME)
 
