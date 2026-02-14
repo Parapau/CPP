@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 15:08:04 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/13 15:41:53 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/14 17:13:28 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ int main()
 	mstack.push(737);
 	//[...]
 	mstack.push(0);
-	/*MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;
-	--it;*/
-	std::cout << "puta" <<  mstack;
-	/*while (it != ite)
+	--it;
+	std::cout << mstack << std::endl;
+	while (it != ite)
 	{
 		std::cout << *it << std::endl;
 		++it;
-	}*/
+		if (it == ite)
+			std::cout << "puta espanya";
+	}
 	//std::stack<int> s(mstack);
-	return 0;
+	return (0);
 }

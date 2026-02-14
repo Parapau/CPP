@@ -156,6 +156,10 @@ int	StackIterator<T>::operator-(const StackIterator &it)
 template <typename T>
 T	&StackIterator<T>::operator*(void)
 {
+	T		ret;
+
+	ret = (this->getPtr()->getPos(this->getI()));
+	std::cout << ret << std::cout;
 	return (this->getPtr()->getPos(this->getI()));
 }
 

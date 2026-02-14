@@ -15,7 +15,7 @@
 //CONSTRUCTORS
 
 template <typename T>
-MutantStack<T>::MutantStack(void)
+MutantStack<T>::MutantStack(void):pos(0)
 {
 }
 
@@ -102,12 +102,9 @@ std::ostream&	operator<<(std::ostream &o, MutantStack<T> &og)
 
 	for (int i = 0; i < og.size(); i++)
 	{
-		std::cout << og.top() << " ";
-		o << og.top() << " ";
+		o << iter.top() << " ";
 		iter.pop();
 	}
-	o << std::endl;
-	std::cout << std::endl;
 	return (o);
 }
 //METHODS
@@ -173,12 +170,12 @@ std::stack<T>	&MutantStack<T>::getStack(void)
 template <typename T>
 T				&MutantStack<T>::getPos(int n)
 {
-	std::stack<T>	iter = (getStack());
+	std::stack<T>	iter = (this->getStack());
 	int				i;
 
-	for (i = 0; i <= n && i < size(); i++)
+	for (i = 0; i < n && i < size(); i++)
 		iter.pop();
 	if (i < n)
 		throw (std::exception());//TODO excepcio custom (possibly)
-	return (iter.top());
+	return(iter.top());
 }

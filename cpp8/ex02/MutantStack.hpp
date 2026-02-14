@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 11:24:01 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/13 15:40:36 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/14 17:29:06 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class MutantStack
 {
 	private:
 		std::stack<T>	stack;
+		T				&pos;
 
 	public:
 		MutantStack(void);
@@ -72,17 +73,10 @@ std::ostream&	operator<<(std::ostream &o, MutantStack<T> &og);
 template <typename T>
 class StackIterator
 {
-	protected://TODO: ovehaulejar aixo i posar una referencia/punter al stack original, iterar amb i retornar la posicio en al que estigui de la referencia
+	protected:
 		int			i;
 		MutantStack<T>		*ms;
-	public://this garbage might get the axe
-/*
-		using	iterator_category = std::output_iterator_tag;
-		using	value_type = MutantStack<T>;
-		using	difference_type = std::ptrdiff_t;
-		using	pointer = MutantStack<T>*;
-		using	reference = MutantStack<T>&;
-*/
+	public:
 
 		StackIterator(void);
 		StackIterator(MutantStack<T>* ptr);//si algo on furula mira aqui perquè gilipolles, elabora una mica enn els teus comentaris
