@@ -15,7 +15,7 @@
 //CONSTRUCTORS
 
 template <typename T>
-MutantStack<T>::MutantStack(void):pos(0)
+MutantStack<T>::MutantStack(void)
 {
 }
 
@@ -170,12 +170,12 @@ std::stack<T>	&MutantStack<T>::getStack(void)
 template <typename T>
 T				&MutantStack<T>::getPos(int n)
 {
-	std::stack<T>	iter = (this->getStack());
 	int				i;
 
+	this->iter = (this->getStack());
 	for (i = 0; i < n && i < size(); i++)
-		iter.pop();
+		this->iter.pop();
 	if (i < n)
 		throw (std::exception());//TODO excepcio custom (possibly)
-	return(iter.top());
+	return(this->iter.top());
 }

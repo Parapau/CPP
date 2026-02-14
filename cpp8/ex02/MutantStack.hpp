@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 11:24:01 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/14 17:29:06 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/14 17:33:16 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class MutantStack
 {
 	private:
 		std::stack<T>	stack;
-		T				&pos;
+		std::stack<T>	iter;
 
 	public:
 		MutantStack(void);
