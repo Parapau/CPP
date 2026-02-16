@@ -60,39 +60,39 @@ StackIterator<T>	MutantStack<T>::rend(void)
 //OVERLOADS
 
 template <typename T>
-bool		MutantStack<T>::operator==(const MutantStack<T> &comp)
+bool		MutantStack<T>::operator==(MutantStack<T> &comp)
 {
-	return (*this == comp);
+	return (this->getStack() == comp.getStack());
 }
 
 template <typename T>
-bool		MutantStack<T>::operator!=(const MutantStack<T> &comp)
+bool		MutantStack<T>::operator!=(MutantStack<T> &comp)
 {
-	return (*this != comp);
+	return (this->getStack() != comp.getStack());
 }
 
 template <typename T>
-bool		MutantStack<T>::operator<=(const MutantStack<T> &comp)
+bool		MutantStack<T>::operator<=(MutantStack<T> &comp)
 {
-	return (*this <= comp);
+	return (this->getStack() <= comp.getStack());
 }
 
 template <typename T>
-bool		MutantStack<T>::operator>=(const MutantStack<T> &comp)
+bool		MutantStack<T>::operator>=(MutantStack<T> &comp)
 {
-	return (*this >= comp);
+	return (this->getStack() >= comp.getStack());
 }
 
 template <typename T>
-bool		MutantStack<T>::operator<(const MutantStack<T> &comp)
+bool		MutantStack<T>::operator<(MutantStack<T> &comp)
 {
-	return (*this < comp);
+	return (this->getStack() < comp.getStack());
 }
 
 template <typename T>
-bool		MutantStack<T>::operator>(const MutantStack<T> &comp)
+bool		MutantStack<T>::operator>(MutantStack<T> &comp)
 {
-	return (*this > comp);
+	return (this->getStack() > comp.getStack());
 }
 
 template <typename T>

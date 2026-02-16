@@ -66,7 +66,7 @@ StackIterator<T>	StackIterator<T>::operator=(MutantStack<T> &other)
 template <typename T>
 bool		StackIterator<T>::operator==(const StackIterator &other)
 {
-	return (getI() == other.getI() && this->getPtr() == other.getPtr());
+	return (getI() == other.getI() && *(this->getPtr()) == *(other.getPtr()));
 }
 
 template <typename T>
@@ -98,7 +98,7 @@ StackIterator<T>	&StackIterator<T>::operator++(void)
 {
 	this->i += 1;
 	if (getI() >= getPtr()->size())
-		this->i = getPtr()->size() + 1;
+		this->i = getPtr()->size();
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/09 11:24:01 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/14 17:33:16 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/16 13:31:04 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ class MutantStack
 		std::stack<T>	&getStack(void);
 		T				&getPos(int i);
 		//Basic stack stuff
-		bool		operator==(const MutantStack &comp);//the man has a different prototype
-		bool		operator!=(const MutantStack &comp);//but it may be for a newer version
-		bool		operator<=(const MutantStack &comp);//since here it must be binary
-		bool		operator>=(const MutantStack &comp);//(wich for some reason means only
-		bool		operator<(const MutantStack &comp);//one arg);
-		bool		operator>(const MutantStack &comp);
+		bool		operator==(MutantStack &comp);//the man has a different prototype
+		bool		operator!=(MutantStack &comp);//but it may be for a newer version
+		bool		operator<=(MutantStack &comp);//since here it must be binary
+		bool		operator>=(MutantStack &comp);//(wich for some reason means only
+		bool		operator<(MutantStack &comp);//one arg);
+		bool		operator>(MutantStack &comp);
 
 		void		push(T const&);
 		void		pop(void);

@@ -6,11 +6,12 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 15:08:04 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/14 17:13:28 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/16 14:14:23 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../MutantStack.hpp"
+#include <list>
 
 int main()
 {
@@ -29,14 +30,37 @@ int main()
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;
 	--it;
-	std::cout << mstack << std::endl;
 	while (it != ite)
 	{
 		std::cout << *it << std::endl;
 		++it;
-		if (it == ite)
-			std::cout << "puta espanya";
 	}
-	//std::stack<int> s(mstack);
+//	std::stack<int> s(mstack); the subject requires this, but this implies inhereting from stakc wich is bad practice, therefore i'm not doing it😃👍
+	std::stack<int> s(mstack.getStack());
 	return (0);
 }
+/*
+int main()
+{
+	std::list<int> mstack;
+	mstack.push_back(5);
+	mstack.push_back(17);
+	std::cout << mstack.back() << std::endl;
+	mstack.pop_back();
+	std::cout << mstack.size() << std::endl;
+	mstack.push_back(3);
+	mstack.push_back(5);
+	mstack.push_back(737);
+	//[...]
+	mstack.push_back(0);
+	std::list<int>::reverse_iterator it = mstack.rbegin();
+	std::list<int>::reverse_iterator ite = mstack.rend();
+	++it;
+	--it;
+	while (it != ite)
+	{
+		std::cout << *it << std::endl;
+		++it;
+	}
+	return (0);
+}*/
