@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 17:17:00 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/17 14:33:11 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:28:59 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,75 +19,113 @@
 #include <fstream>
 #include <sstream>
 #include <cstring>
+#include <cstdlib>
+#include <limits.h>
 
 class Date
 {
 	private:
-		int		_year;
-		int		_month;
-		int		_day;
-		float	_value;
+		long long		_year;
+		long long		_month;
+		long long		_day;
+		double			_value;
 
 	public:
 		Date(void);
 		Date(Date &og);
-		Date(int y, int m, int d);
-		Date(int y, int m, int d, float v);
+		Date(long long y, long long m, long long d);
+		Date(long long y, long long m, long long d, double v);
 		~Date(void);
 
-		Date	&operator=(Date &og);
-		bool	operator>(Date &other);
-		bool	operator<(Date &other);
-		bool	operator>=(Date &other);
-		bool	operator<=(Date &other);
-		bool	operator==(Date &other);
-		bool	operator!=(Date &other);
+		Date			&operator=(Date &og);
+		bool			operator>(Date &other) const;
+		bool			operator<(Date &other) const;
+		bool			operator>=(Date &other) const;;
+		bool			operator<=(Date &other) const;;
+		bool			operator==(Date &other) const;;
+		bool			operator!=(Date &other) const;;
+		bool			operator>(const Date &other) const;
+		bool			operator<(const Date &other) const;
+		bool			operator>=(const Date &other) const;;
+		bool			operator<=(const Date &other) const;;
+		bool			operator==(const Date &other) const;;
+		bool			operator!=(const Date &other) const;;
 
-		int		getYear(void) const;
-		int		getMonth(void) const;
-		int		getDay(void) const;
-		float	getValue(void) const;
+		long long		getYear(void) const;
+		long long		getMonth(void) const;
+		long long		getDay(void) const;
+		float			getValue(void) const;
 
-		static Date		parseDate(std::string d);
+		void	checkDate(void) const;
+		static Date		*parseDate(std::string d);
 
 	class BadDate: public std::exception
 	{
 		public:
 			const char* what() const throw();
 	};
+
+	class NegativeValue: public std::exception
+	{
+		public:
+			const char* what() const throw();
+	};
+
+	class BigNumber: public std::exception
+	{
+		public:
+			const char* what() const throw();
+	};
 };
+
+std::ostream&	operator<<(std::ostream &o, Date &og);
 
 class BitcoinExchange
 {
 	private:
-		std::set<Date>				_data;
+		std::set<Date *>			_data;
 
-		std::set<Date>				parseData(void);
-		static std::set<Date>		parseData(std::string);
-		static std::set<Date>		getData(void);
+		void						parseData(void);
+		std::set<Date *>			&parseData(std::string input);
+		std::set<Date *>			&getData(void);
+		void						setData(std::set<Date *> data);
+		Date						*findDate(Date *date);
 	public:
 		BitcoinExchange(void);
 		~BitcoinExchange(void);
 
-		void	doYourThing(void);
+		void	doYourThing(std::string input);
 
 
-	class BadDataFile: public std::exception
+	class BadFile: public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
+
+	class BadDataFile: public BadFile
 	{
 		public:
 			const char* what() const throw();
 	};
 
-	class BadInputFile: public std::exception
+	class BadInputFile: public BadFile
+	{
+		public:
+			const char* what() const throw();
+	};
+
+	class MissingInputFile: public BadFile
+	{
+		public:
+			const char* what() const throw();
+	};
+
+	class MissingDataFile: public BadFile
 	{
 		public:
 			const char* what() const throw();
 	};
 };
-
-
-
-
-
 
 #endif
