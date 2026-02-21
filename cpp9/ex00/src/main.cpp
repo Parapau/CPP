@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 17:17:11 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/20 15:31:54 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/21 12:05:20 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ int		main(int argc, char **argv)
 	std::string			input;
 
 	if (argc != 2)
+	{
+		std::cout << "puta";
 		return (0);
+	}
+	std::cout << "openationing" << std::endl;
 	input = argv[1];
 	input = "../" + input;
 	CryptoBrosAreCringe.doYourThing(input);

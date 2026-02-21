@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 17:17:21 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/20 15:36:05 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/21 12:00:34 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ Date::~Date(void)
 
 //METHODS
 
-static Date		*parseDate(std::string input)
+Date		*parseDate(std::string input)
 {
 	std::stringstream	s(input);
 	std::string			nums[5];
 
-	//TODO check for errors in line and throw errors
 	getline(s, nums[0], '-');
 	getline(s, nums[1], '-');
 	if (input.rfind(" - ", std::string::npos))
@@ -198,6 +197,7 @@ void		BitcoinExchange::parseData(void)
 	file.open("data.csv", std::ios::out);
 	if (file.basic_ios::rdstate() == std::ios::failbit)
 		throw (MissingDataFile());
+	std::getline(file, line);//removefirst info line
 	while (!file.eof())
 	{
 		std::getline(file, line);
@@ -216,10 +216,11 @@ std::set<Date *>	&BitcoinExchange::parseData(std::string input)
 	file.open(input.c_str(), std::ios::out);
 	if (file.basic_ios::rdstate() == std::ios::failbit)
 		throw (MissingInputFile());
+	std::getline(file, line);//removefirst info line
 	while (!file.eof())
 	{
 		std::getline(file, line);
-		data->insert(Date::parseDate(line));
+		data->insert(parseDate(line));
 	}
 	file.close();
 	return(*data);//TODO again, may be leaking polong longers
