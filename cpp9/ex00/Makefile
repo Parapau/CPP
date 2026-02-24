@@ -6,11 +6,11 @@
 #    By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/02 12:53:07 by pafranco          #+#    #+#              #
-#    Updated: 2026/02/16 17:17:58 by pafranco         ###   ########.fr        #
+#    Updated: 2026/02/24 12:51:48 by pafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= CryptoBrosAreCringe
+NAME		= btc
 	
 CC			= c++
 FLAGS		= -Wall -Wextra -Werror -g -std=c++98

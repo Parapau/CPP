@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 17:17:00 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/20 15:28:59 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/24 12:25:28 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ class Date
 		long long		_month;
 		long long		_day;
 		double			_value;
+		std::string		_badInput;
 
 	public:
 		Date(void);
 		Date(Date &og);
+		Date(std::string input);
 		Date(long long y, long long m, long long d);
 		Date(long long y, long long m, long long d, double v);
 		~Date(void);
@@ -55,9 +57,10 @@ class Date
 		long long		getMonth(void) const;
 		long long		getDay(void) const;
 		float			getValue(void) const;
+		std::string		&getBadInput(void);
 
-		void	checkDate(void) const;
-		static Date		*parseDate(std::string d);
+		void			checkDate(void) const;
+		static Date		*parseDate(std::string d, int mode);
 
 	class BadDate: public std::exception
 	{
@@ -88,13 +91,16 @@ class BitcoinExchange
 		void						parseData(void);
 		std::set<Date *>			&parseData(std::string input);
 		std::set<Date *>			&getData(void);
-		void						setData(std::set<Date *> data);
+		void						setData(std::set<Date *> &data);
 		Date						*findDate(Date *date);
+		Date						*findDate(std::set<Date *>::iterator date);
 	public:
 		BitcoinExchange(void);
 		~BitcoinExchange(void);
 
 		void	doYourThing(std::string input);
+		void	print(void);
+		void	print(std::set<Date *>);
 
 
 	class BadFile: public std::exception
