@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 17:17:00 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/24 12:25:28 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/24 15:17:26 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ class BitcoinExchange
 		std::set<Date *>			_data;
 
 		void						parseData(void);
-		std::set<Date *>			&parseData(std::string input);
+		std::set<Date *>			*parseData(std::string input);
 		std::set<Date *>			&getData(void);
 		void						setData(std::set<Date *> &data);
 		Date						*findDate(Date *date);

@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 17:17:21 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/24 12:49:58 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/24 15:19:17 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,8 @@ const char		*Date::BigNumber::what() const throw()
 
 /*********************************BITCOIN EXCHANGE*****************************/
 
+void		deleteSet(std::set<Date *> date);
+
 //CONSTRUCTORS
 
 BitcoinExchange::BitcoinExchange(void)
@@ -235,9 +237,16 @@ BitcoinExchange::BitcoinExchange(void)
 
 BitcoinExchange::~BitcoinExchange(void)
 {
+	deleteSet(getData());
 }
 
 //METHODS
+
+void		deleteSet(std::set<Date *> data)
+{
+	for (std::set<Date *>::iterator i = data.begin() ; i != data.end() ; i++)
+		delete (*i);
+}
 
 void		BitcoinExchange::parseData(void)
 {
@@ -258,7 +267,7 @@ void		BitcoinExchange::parseData(void)
 	file.close();
 }
 
-std::set<Date *>	&BitcoinExchange::parseData(std::string input)
+std::set<Date *>	*BitcoinExchange::parseData(std::string input)
 {
 	std::fstream		file;
 	std::set<Date *>		*data = new std::set<Date *>;
@@ -275,12 +284,13 @@ std::set<Date *>	&BitcoinExchange::parseData(std::string input)
 			data->insert(parseDate(line, 1));
 	}
 	file.close();
-	return(*data);//TODO again, may be leaking polong longers
+
+	return(data);//TODO again, may be leaking polong longers
 }
 
 void	BitcoinExchange::doYourThing(std::string str)
 {
-	std::set<Date *>				input;
+	std::set<Date *>				*input;
 	std::set<Date *>::iterator		it;
 	double							value;
 
@@ -297,7 +307,7 @@ void	BitcoinExchange::doYourThing(std::string str)
 	}
 	//print();
 	//print(input);
-	for (std::set<Date *>::iterator date = input.begin() ; date != input.end() ; date++)
+	for (std::set<Date *>::iterator date = (*input).begin() ; date != (*input).end() ; date++)
 	{
 		try
 		{
@@ -318,18 +328,18 @@ void	BitcoinExchange::doYourThing(std::string str)
 			std::cout << e.what() << std::endl;
 		}
 	}
+	deleteSet(*input);
+	delete (input);
 }
 
 void	BitcoinExchange::print(void)
 {
-	std::cout << "printeixon" << std::endl;
 	for (std::set<Date *>::iterator i = getData().begin() ; i != getData().end() ; i++)
 		std::cout << **i << std::endl;
 }
 
 void	BitcoinExchange::print(std::set<Date *> data)
 {
-	std::cout << "printeixon" << std::endl;
 	for (std::set<Date *>::iterator i = data.begin() ; i != data.end() ; i++)
 		std::cout << **i << std::endl;
 }
