@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 13:53:07 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/24 14:57:58 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/02/27 12:17:08 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ rotaluklak::~rotaluklak(void)
 
 //OPERATIONS
 
-void		sum(std::list<long long> *nums)
+void		sum(std::deque<long long> *nums)
 {
 	long long		num1;
 
@@ -35,7 +35,7 @@ void		sum(std::list<long long> *nums)
 	nums->front() += num1;
 }
 
-void		rest(std::list<long long> *nums)
+void		rest(std::deque<long long> *nums)
 {
 	long long		num1;
 
@@ -44,7 +44,7 @@ void		rest(std::list<long long> *nums)
 	nums->front() -= num1;
 }
 
-void		mult(std::list<long long> *nums)
+void		mult(std::deque<long long> *nums)
 {
 	long long		num1;
 
@@ -53,7 +53,7 @@ void		mult(std::list<long long> *nums)
 	nums->front() *= num1;
 }
 
-void		div(std::list<long long> *nums)
+void		div(std::deque<long long> *nums)
 {
 	long long		num1;
 
@@ -78,9 +78,9 @@ static bool isNum(std::string s)
 	return (true);
 }
 
-void operate(std::list<long long> *nums, std::string sign)
+void operate(std::deque<long long> *nums, std::string sign)
 {
-	if (distance(nums->begin(), nums->end()) < 2 || sign.size() != 1)
+	if (nums->size() < 2 || sign.size() != 1)
 		throw (rotaluklak::Bad());
 	switch (sign[0])
 	{
@@ -107,7 +107,7 @@ long long		rotaluklak::kurwa(std::string input)
 {
 	std::string				num;
 	std::stringstream		s(input);
-	std::list<long long>	nums;
+	std::deque<long long>	nums;
 
 	while (s >> num)
 	{

@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pafranco <pafranco@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/24 12:57:59 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/27 12:14:37 by pafranco         ###   ########.fr       */
+/*   Created: 2026/02/26 15:44:51 by pafranco          #+#    #+#             */
+/*   Updated: 2026/02/27 12:19:13 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RPN_HPP
-# define RPN_HPP
+#ifndef PMERGE_ME
+# define PMERGE_ME
 
-#include <deque>
-#include <cstdlib>
-#include <sstream>
 #include <iostream>
+#include <vector>
+#include <list>
+#include <time.h>
+#include <sstream>
+#include <cmath>
 
-class rotaluklak// kalkulator in calculator in polish, and it's in reverse :)
+class Merger
 {
 	private:
-		rotaluklak(void);
-		~rotaluklak(void);
-
+		int		_size;
+		
+		Merger(void);
+		~Merger(void);
 	public:
-		static long long	kurwa(std::string);
+		static void		sort(std::vector<int> vec);
+		static void		sort(int *arr);
 
-	class Bad: public std::exception
+	class BadInput: public std::exception
 	{
 		public:
 			virtual const char* what() const throw();
