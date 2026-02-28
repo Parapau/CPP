@@ -75,9 +75,9 @@ static void		jacob(std::vector<int> *vec, int size)
 			main.push_back(*iter);
 		else
 			pend.push_back(*iter);
-		if (mode != 0 && iter % (size / 2) == 0)
+		if (mode != 0 && distance(vec->begin(), iter) % (size / 2) == 0)
 			mode++;
-		else if (iter % (size / 2) == 0)
+		else if (distance(vec->begin(), iter) % (size / 2) == 0)
 			mode = 0;
 	}
 }
