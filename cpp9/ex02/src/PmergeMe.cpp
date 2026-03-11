@@ -25,7 +25,7 @@ Merger::~Merger(void)
 }
 
 //FUNCTIONS
-
+/*
 static bool isNum(std::string s)
 {
 	std::string::iterator	i;
@@ -38,6 +38,18 @@ static bool isNum(std::string s)
 		i++;
 	}
 	return (true);
+}*/
+
+static void		sub(std::vector<int> *vec, std::vector<int> *main)
+{
+	int		i;
+
+	i = 0;
+	for (std::vector<int>::iterator itermain = main->begin() ; itermain != main->end() ; itermain++)
+	{
+		vec->at(i) = *itermain;
+		i++;
+	}
 }
 
 static void		swap(std::vector<int>::iterator vec, int num)
@@ -52,14 +64,26 @@ static void		swap(std::vector<int>::iterator vec, int num)
 	}
 }
 
-static void		insert(std::vector<int> main, std::vector<int>::iterator vec, int num, int pos)
+static void		insert(std::vector<int> *main, std::vector<int> *pend, int jacob, int size)
 {
-	for (int i = 0 ; i < num ; i++)
+	int								pos;
+	int								dif;
+	std::vector<int>::iterator		iter;
+
+	iter = main->begin();
+	pos = jacob * size / 2;//check if this goes out of bounds
+	dif = pos / 2;
+	while (dif != 0)
 	{
-
-
-		
+		if (pend->at(((jacob - 1) * size) - 1) < main->at(pos))
+			pos -= dif;
+		else
+			pos += dif;
+		dif /= 2;
 	}
+	iter += pos;
+	for (int n = 0 ; n < size ; n++)
+		main->insert(iter, pend->at(((jacob - 2) * size) + n));
 }
 
 static void		jacob(std::vector<int> *vec, int size)
@@ -67,9 +91,13 @@ static void		jacob(std::vector<int> *vec, int size)
 	std::vector<int>	main;
 	std::vector<int>	pend;
 	int					mode;
+	int					jacob;
+	int					jacob1;
 
+	jacob = 1;
+	jacob1 = 1;
 	mode = -2;//may need to be -1
-	for (std::vector<int>::iterator iter = vec->begin() ; iter != vec->end() ; iter++)
+	for (std::vector<int>::iterator iter = vec->begin() ; iter != (vec->end() - (vec->size() % size)); iter++)
 	{
 		if (mode == 0)
 			main.push_back(*iter);
@@ -80,33 +108,45 @@ static void		jacob(std::vector<int> *vec, int size)
 		else if (distance(vec->begin(), iter) % (size / 2) == 0)
 			mode = 0;
 	}
+	//both  main and pend are full now we start sorting
+	mode = size - 1;
+	while (jacob <= (int)vec->size() / size)
+	{
+		jacob += jacob1 * 2;
+		for (int jacob2 = jacob ; jacob2 > jacob1 || jacob2 == 1 ; jacob2--)
+			insert(&main, &pend, jacob2, size);
+	}
+	sub(vec, &main);
 }
 
-static void		pair(std::vector<int> vec, int size)
+static void		pair(std::vector<int> *vec, int size)
 {
-	int						i;
-	std::vector<int>::iterator	iter = vec.begin();
-
-	i = 0;
 	size = size * 2;
-	for (std::vector<int>::iterator	iter = vec.begin() ;
-			iter != vec.end() ; iter + size)
+	for (std::vector<int>::iterator	iter = vec->begin() ;
+			iter != vec->end() ; iter += size)
 	{
+		//std::cout << *iter << std::endl;
 		if (*(iter + ((size / 2) - 1)) < (*(iter + (size - 1))))
 			swap(iter, size);
 	}
-	if (vec.size() > size * 2)
+	if ((int) vec->size() > size * 2)
 		pair(vec, size);
+	jacob(vec, size);
+}
 
-
-
+static void		print(std::vector<int> *vec)
+{
+	for (std::vector<int>::iterator	iter = vec->begin() ; iter != vec->end() ; iter++)
+		std::cout << *iter << ' ';
+	std::cout << std::endl;
 }
 
 //METHODS
 
-void	sort(int *arr)
+void	Merger::sort(std::vector<int> *vec)
 {
-	
+	pair(vec, 1);//may need size 1
+	print(vec);
 }
 
 //EXCEPTIONS

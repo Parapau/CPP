@@ -6,12 +6,12 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:44:51 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/27 12:19:13 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/03/11 17:12:50 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PMERGE_ME
-# define PMERGE_ME
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
 #include <iostream>
 #include <vector>
@@ -28,8 +28,8 @@ class Merger
 		Merger(void);
 		~Merger(void);
 	public:
-		static void		sort(std::vector<int> vec);
-		static void		sort(int *arr);
+		static void		sort(std::vector<int> *vec);
+		//static void		sort(int *arr);
 
 	class BadInput: public std::exception
 	{
