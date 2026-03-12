@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 13:31:30 by pafranco          #+#    #+#             */
-/*   Updated: 2026/03/11 17:13:03 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/03/12 15:47:46 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int		main(void)
 {
-	int					arr[8] = {1, 3, 8, 9, 2, 5, 6, 4};
+	int					arr[16] = {10, 16, 5, 6, 13, 0, 9, 3, 12, 2, 1, 11, 14, 4, 7, 15};
 	std::vector<int>	vec;
 
-	for (int i = 0; i < 8 ; i++)
+	for (int i = 0; i < 10 ; i++)
 		vec.push_back(arr[i]);
 	Merger::sort(&vec);
 }
