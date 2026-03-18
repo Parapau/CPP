@@ -52,7 +52,7 @@ static void		sub(std::vector<int> *vec, std::vector<int> *main)
 	int		i;
 
 	i = 0;
-	for (std::vector<int>::iterator itermain = main->begin() ; itermain != main->end() ; itermain++)
+	for (std::vector<int>::iterator itermain = main->begin() ; itermain != main->end() && i < (int)vec->size(); itermain++)
 	{
 		vec->at(i) = *itermain;
 		i++;
@@ -71,36 +71,47 @@ static void		swap(std::vector<int>::iterator vec, int num)
 	}
 }
 
+static int		binary(std::vector<int> *main, int pendNum, int max, int size)
+{
+	int		mid;
+	int		low;
+	int		high;
+
+	low = 0;
+	high = max;
+	std::cout << "binaration" << std::endl;
+	print(main);
+	while (low != high || high - low != 1)
+	{
+		mid = (high - low) / 2;
+		if (pendNum > main->at(((low + mid) * size) - 1))
+			low = mid + 1;
+		else
+			high = mid - 1;
+	}
+	std::cout << mid << std::endl;
+	return (mid);
+}
+
 static int		jinsert(std::vector<int> *main, std::vector<int> *pend, int jacob, int size, int *add)
 {
 	int								pos;
-	int								dif;
-	std::vector<int>::iterator		iter;
+	int								mid;
 
-	iter = main->begin();
-	pos = (jacob + *add) / 2;//dividing early to get rid of decimals that would get us out of the bounds of the pair (using dif to not create an extra variable just for this)
-	dif = pos / 2 + (pos == 1);//if pos == 1 dif would always be 0, this may be symptomatic of the whole system and may ffle with bigger numbers
-	if ((jacob - 1) * size > (int) pend->size())
-		return (0);
-	while (dif != -1 && pos != jacob + *add)//last step needs to subtract 1 from pos 2 times, therefore we're using 0 to represent that
-	{
-		if (pend->at(((jacob - 1) * size) - 1) < main->at(((pos + 1) * size) - 1))
-			pos -= dif + (dif == 0);
-		else
-			pos += dif + (dif == 0);
-		if (dif == 0)
-			dif--;
-		else
-			dif /= 2;
-	}
+	pos = (jacob + *add) / 2;//point in the middle
+	mid = pos / 2;
+	pos = binary(main, pend->at(((jacob - 2) * size) - 1), jacob + *add, size);
+/*	if (pos == 0 && pend->at(((jacob - 1) * size) - 1) > main->at(size - 1))
+		pos++;
 	if (pos < 0)
-		pos = 0;
-	iter += pos * size;//pos could become -1, check what happens
+		pos = 0;*/
 	for (int n = size - 1 ; n >= 0 ; n--)
 	{
-		main->insert(iter, pend->at(((jacob - 2) * size) + n));
+		int		num = pend->at(((jacob - 2) * size) + n);
+	//	print(main);
+	//	std::cout << main->at(pos * size) << std::endl;
+		main->insert(main->begin() + (pos * size), num);
 	}
-	std::cout << pos << ' ' << jacob  << ' ' << *add << std::endl;
 	print(main);
 	if (pos >= jacob + *add)
 		return (1);//this increase to the mains size will be added later
@@ -132,11 +143,13 @@ static void		jacob(std::vector<int> *vec, int size)
 		else
 			pend.push_back(*iter);
 	}
+	std::cout << "main: ";
 	print(&main);
+	std::cout << "pend: ";
 	print(&pend);
 	//both  main and pend are full now we start sorting
 	util = 0;//util is now the extra length the main has gained
-	while (jacob <= (int)vec->size() / size)
+	while (jacob <= ((int)pend.size() / size + 2))//TODO +2 or what
 	{
 		int		jacobtemp;
 		int		addLater = 0;//when we insert further than will be checked in the next iteration the length is counted here to be added to the total after we finish this jacobsthal level
@@ -145,7 +158,9 @@ static void		jacob(std::vector<int> *vec, int size)
 		jacob += jacob1 * 2;
 		jacob1 = jacobtemp;
 		for (int jacob2 = jacob ; jacob2 > jacob1 ; jacob2--)
+		{
 			addLater += jinsert(&main, &pend, jacob2, size / 2, &util);
+		}
 		util += addLater;
 	}
 	sub(vec, &main);
@@ -167,7 +182,7 @@ static void		pair(std::vector<int> *vec, int size)
 		if (*(iter + ((size / 2) - 1)) > (*(iter + (size - 1))) && i == size)
 		{
 			swap(iter, size);
-			print(vec);
+			//print(vec);
 		}
 		if (i == size)
 			i = 0;
@@ -179,7 +194,9 @@ static void		pair(std::vector<int> *vec, int size)
 	{
 		std::cout << "iteration level: " << size << std::endl;
 		jacob(vec, size);
+		std::cout << "iteration level: " << size << std::endl;
 	}
+	std::cout << "we are finishitationing" << std::endl;
 }
 
 //METHODS

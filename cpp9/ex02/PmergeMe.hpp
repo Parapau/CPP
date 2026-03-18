@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:44:51 by pafranco          #+#    #+#             */
-/*   Updated: 2026/03/11 17:12:50 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/03/18 10:11:57 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 class Merger
 {
 	private:
-		int		_size;
+//		int		_size;
 		
 		Merger(void);
 		~Merger(void);
