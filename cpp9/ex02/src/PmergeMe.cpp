@@ -79,15 +79,47 @@ static int		binary(std::vector<int> *main, int pendNum, int max, int size)
 
 	low = 0;
 	high = max;
-	std::cout << "binaration" << std::endl;
-	print(main);
-	while (low != high || high - low != 1)
+	mid = -14;/*
+	while (low != high && low != mid && high != mid)
 	{
-		mid = (high - low) / 2;
-		if (pendNum > main->at(((low + mid) * size) - 1))
+		mid = low + ((high - low) / 2);
+		if (pendNum > main->at(size + (mid * size) - 1))
 			low = mid + 1;
 		else
 			high = mid - 1;
+	}*/
+	std::cout << "binaration" << std::endl;
+	std::cout << pendNum << std::endl;
+	while (low <= high)
+	{
+		mid = low + ((high - low) / 2);
+		int num = main->at(size + (mid * size) - 1);
+		if (num < pendNum)
+			low = mid + 1;
+		else if (num > pendNum)
+			high = mid - 1;
+		else
+		{
+			std::cout << "awdawd" << std::endl;
+			return (mid);
+		}
+	}
+	mid = low + ((high - low) / 2);
+	std::cout << mid << ' ' <<  max << ' ' << pendNum << ' ' << main->at(size + (mid * size) - 1) << std::endl;
+	/*if (low == high)
+	{
+		std::cout << "EqUaTiOnInG" << std::endl;
+		mid = low;
+	}*/
+	if (mid == 1 && pendNum < main->at(size - 1))
+	{
+		std::cout << "minimation";
+		mid = 0;
+	}
+	if (mid == max - 1 && pendNum > main->at((max * size) - 1))
+	{
+		std::cout << "MAXATION";
+		mid = max;
 	}
 	std::cout << mid << std::endl;
 	return (mid);
@@ -96,21 +128,16 @@ static int		binary(std::vector<int> *main, int pendNum, int max, int size)
 static int		jinsert(std::vector<int> *main, std::vector<int> *pend, int jacob, int size, int *add)
 {
 	int								pos;
-	int								mid;
+	std::vector<int>::iterator		iter;
 
-	pos = (jacob + *add) / 2;//point in the middle
-	mid = pos / 2;
-	pos = binary(main, pend->at(((jacob - 2) * size) - 1), jacob + *add, size);
-/*	if (pos == 0 && pend->at(((jacob - 1) * size) - 1) > main->at(size - 1))
-		pos++;
-	if (pos < 0)
-		pos = 0;*/
-	for (int n = size - 1 ; n >= 0 ; n--)
+	if ((jacob - 1) * size > (int) pend->size())
+		return (0);
+	pos = binary(main, pend->at(((jacob - 1) * size) - 1), jacob + *add, size);
+	iter = main->begin() + (pos * size);
+	for (int n = 0 ; n <= size - 1 ; n++)
 	{
-		int		num = pend->at(((jacob - 2) * size) + n);
-	//	print(main);
-	//	std::cout << main->at(pos * size) << std::endl;
-		main->insert(main->begin() + (pos * size), num);
+		int		num = pend->at((((jacob - 1) * size) - n) - 1);
+		main->insert(iter, num);
 	}
 	print(main);
 	if (pos >= jacob + *add)
@@ -149,7 +176,7 @@ static void		jacob(std::vector<int> *vec, int size)
 	print(&pend);
 	//both  main and pend are full now we start sorting
 	util = 0;//util is now the extra length the main has gained
-	while (jacob <= ((int)pend.size() / size + 2))//TODO +2 or what
+	while (jacob <= (((int)pend.size() / size) + 2))//TODO +2 or what
 	{
 		int		jacobtemp;
 		int		addLater = 0;//when we insert further than will be checked in the next iteration the length is counted here to be added to the total after we finish this jacobsthal level
@@ -162,6 +189,7 @@ static void		jacob(std::vector<int> *vec, int size)
 			addLater += jinsert(&main, &pend, jacob2, size / 2, &util);
 		}
 		util += addLater;
+		std::cout << "jacobs: " << jacob1 << ' ' << jacob << std::endl;
 	}
 	sub(vec, &main);
 	std::cout << "jacobs all over the place" << std::endl;
