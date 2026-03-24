@@ -6,7 +6,7 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 15:44:51 by pafranco          #+#    #+#             */
-/*   Updated: 2026/03/18 10:11:57 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:19:40 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,20 @@
 
 #include <iostream>
 #include <vector>
-#include <list>
+#include <deque>
 #include <time.h>
 #include <sstream>
 #include <cmath>
+#include <ctime>
 
 class Merger
 {
 	private:
-//		int		_size;
-		
 		Merger(void);
 		~Merger(void);
 	public:
-		static void		sort(std::vector<int> *vec);
-		//static void		sort(int *arr);
+		static void		sortVector(std::vector<int> *vec);
+		static void		sortDeque(std::deque<int> *vec);
 
 	class BadInput: public std::exception
 	{

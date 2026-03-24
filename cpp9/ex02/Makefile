@@ -6,7 +6,7 @@
 #    By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/02 12:53:07 by pafranco          #+#    #+#              #
-#    Updated: 2026/02/26 15:44:28 by pafranco         ###   ########.fr        #
+#    Updated: 2026/03/24 13:51:50 by pafranco         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RM			= rm -rf
 SRCDIR = 	src/
 OBJDIR = 	obj/
 
-FILES		= main PmergeMe
+FILES		= main PmergeMeVector PmergeMeDeque
 
 SRC			= $(addprefix $(SRCDIR), $(FILES:=.cpp))
 OBJ			= $(addprefix $(OBJDIR), $(FILES:=.o))

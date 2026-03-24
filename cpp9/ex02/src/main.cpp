@@ -6,20 +6,82 @@
 /*   By: pafranco <pafranco@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 13:31:30 by pafranco          #+#    #+#             */
-/*   Updated: 2026/03/19 17:09:48 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:36:25 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../PmergeMe.hpp"
 
-int		main(void)
+bool isNum(char *s)
 {
-//	int					arr[16] = {1, 16, 7, 6, 13, 0, 9, 3, 2, 12, 10, 11, 14, 4, 5, 15};
-	int					arr[64] = {19, 64, 63, 34, 51, 16, 11, 10, 28, 56, 58, 43, 2, 45, 54, 25, 44, 38, 23, 18, 53, 8, 3, 41, 9, 61, 33, 46, 42, 24, 60, 21, 14, 26, 52, 15, 40, 20, 22, 55, 7, 57, 27, 39, 48, 47, 35, 32, 49, 29, 5, 4, 6, 30, 17, 31, 59, 1, 13, 36, 12, 50, 37, 62};
-//	int					arr[5] = {11, 25, 43, 82, 13};
-	std::vector<int>	vec;
+	for (int i = 0 ; s[i] != 0 ; i++)
+	{
+		if (!std::isdigit(s[i]))
+			throw(Merger::BadInput());
+	}
+	return (true);
+}
 
-	for (int i = 0; i < 64 ; i++)
-		vec.push_back(arr[i]);
-	Merger::sort(&vec);
+static void		print(std::deque<int> *vec)
+{
+	for (std::deque<int>::iterator	iter = vec->begin() ; iter != vec->end() ; iter++)
+		std::cout << *iter << ' ';
+	std::cout << std::endl;
+}
+
+void	parse(char **argv, std::vector<int> *vec, std::deque<int> *que)
+{
+	for (int	i = 0 ; argv[i] != 0 ; i++)
+	{
+		if (isNum(argv[i]))
+		{
+			int		num;
+
+			num = atoi(argv[i]);
+			vec->push_back(num);
+			que->push_back(num);
+		}
+		else
+			throw (Merger::BadInput());
+	}
+}
+
+int		main(int argc, char **argv)
+{
+	std::vector<int>	vec;
+	std::deque<int>		que;
+	double				start;
+	double				vecTime;
+	double				queTime;
+
+	if (argc < 2)
+	{
+		std::cout << "No input given >:(" << std::endl;
+		return (0);
+	}
+	try
+	{
+	parse(argv + 1, &vec, &que);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+		return (0);
+	}
+	std::cout << "Unsorted numbers:" << std::endl;
+	print(&que);
+	std::cout << std::endl;
+	start = std::clock();
+	Merger::sortVector(&vec);
+	vecTime = std::clock() - start;
+	start = std::clock();
+	Merger::sortDeque(&que);
+	queTime = std::clock() - start;
+	std::cout << "Sorted numbers:" << std::endl;
+	print(&que);
+	std::cout << std::endl;
+	std::cout << "Time taken by Vector " << vecTime << "µs" << std::endl;
+	std::cout << std::endl;
+	std::cout << "Time taken by Deque " << queTime << "µs" << std::endl;
+
 }

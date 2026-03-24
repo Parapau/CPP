@@ -6,14 +6,14 @@
 /*   By: pafranco <pafranco@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 12:57:59 by pafranco          #+#    #+#             */
-/*   Updated: 2026/02/27 12:14:37 by pafranco         ###   ########.fr       */
+/*   Updated: 2026/03/24 14:43:50 by pafranco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RPN_HPP
 # define RPN_HPP
 
-#include <deque>
+#include <list>
 #include <cstdlib>
 #include <sstream>
 #include <iostream>
